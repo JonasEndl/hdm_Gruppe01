@@ -5,7 +5,7 @@ import java.util.Vector;
 
 
 
-
+//MessagingAdministrationImpl noch anpassen! siehe Klassendiagramm
 
 
 public class MessagingAdministrationImpl extends RemoteServiceServlet
