@@ -4,10 +4,6 @@ package de.hdm.itprojekt.server;
 import java.util.Vector;
 
 
-
-//!!!MessagingAdministrationImpl noch anpassen! siehe Klassendiagramm
-
-
 public class MessagingAdministrationImpl extends RemoteServiceServlet
     implements MessagingAdministration {
 
@@ -53,39 +49,13 @@ public class MessagingAdministrationImpl extends RemoteServiceServlet
     return this.nMapper.findByKey(id);
   }
 
-  //* bei save und delete als Rückgabewert nicht besser void ???siehe Klassendiagramm
-
-  public Nutzer save(Nutzer n) throws IllegalArgumentException {
+  
+  public void save(Nutzer n) throws IllegalArgumentException {
     nMapper.update(n);
   }
 
-  public Nutzer delete(Nutzer n) throws IllegalArgumentException {
+  public void delete(Nutzer n) throws IllegalArgumentException {
     
-//* sämtliche Daten von Nutzer vorher löschen???
-
-    Vector<Nachricht> nachricht= this.getNachrichtByNutzer(n);
-
-    if (nachrichten != null) {
-      for (Nachricht na : nachricht) {
-        this.delete(na);
-      }
-    }
-
-   Vector<Abonnement> abonnement=this.getAbonnementByNutzer(n);
-
-    if (abonnement != null) {
-      for (Abonnement a : abonnement) {
-        this.delete(a);
-      }
-    } 
-Vector<Hashtag> hashtag=this.getHashtagByNutzer(n);
-
-    if (hashtag!= null) {
-      for (Hashtag h : hashtag) {
-        this.delete(h);
-      }
-    }
- 
     this.nMapper.delete(n);
   }
 
@@ -103,16 +73,14 @@ public Nutzer createHashtag(Hashtag h) throws IllegalArgumentException {
     return this.hMapper.findByKey(id);
   }
 
-  //* bei save und delete als Rückgabewert nicht besser void ???
+ 
 
-  public Hashtag save( Hashtag h) throws IllegalArgumentException {
+  public void save( Hashtag h) throws IllegalArgumentException {
     hMapper.update(h);
   }
 
-  public Hashtag delete( Hashtag h) throws IllegalArgumentException {
+  public void delete( Hashtag h) throws IllegalArgumentException {
     
-//* sämtliche Daten von Hashtag vorher löschen???
-
    this.hMapper.delete(h);
   }
 
@@ -131,16 +99,14 @@ public Abonnement createAbonnement ( Abonnement a) throws IllegalArgumentExcepti
     return this.aMapper.findByKey(id);
   }
 
-  //* bei save und delete als Rückgabewert nicht besser void ???
+ 
 
-  public Abonnement save( Abonnement a) throws IllegalArgumentException {
+  public void save( Abonnement a) throws IllegalArgumentException {
     aMapper.update(a);
   }
 
-  public Abonnement delete( Abonnement a) throws IllegalArgumentException {
+  public void delete( Abonnement a) throws IllegalArgumentException {
     
-//* sämtliche Daten von Abonnement vorher löschen???
-
     this.aMapper.delete(a);
   }
 
@@ -157,17 +123,12 @@ public Abonnement createAbonnement ( Abonnement a) throws IllegalArgumentExcepti
     return this.uMapper.findByKey(id);
   }
 
-  //* bei save und delete als Rückgabewert nicht besser void ???
-
-  public Unterhaltung save(Unterhaltung u) throws IllegalArgumentException {
+  public void save(Unterhaltung u) throws IllegalArgumentException {
     uMapper.update(u);
   }
 
-  public Unterhaltung delete(Unterhaltung u) throws IllegalArgumentException {
-    
-//* sämtliche Daten von Unterhaltung vorher löschen???
-
-    
+  public void delete(Unterhaltung u) throws IllegalArgumentException {
+        
     this.uMapper.delete(u);
   }
 
@@ -185,15 +146,12 @@ public Abonnement createAbonnement ( Abonnement a) throws IllegalArgumentExcepti
     return this.naMapper.findByKey(id);
   }
 
-  //* bei save und delete als Rückgabewert nicht besser void ???
-
-  public Unterhaltung save(Unterhaltung u) throws IllegalArgumentException {
+  public void save(Unterhaltung u) throws IllegalArgumentException {
     uMapper.update(u);
   }
 
-  public Nachricht delete(Nachricht  na) throws IllegalArgumentException {
+  public void delete(Nachricht  na) throws IllegalArgumentException {
     
-   
     this.naMapper.delete(na);
   }
 
@@ -218,14 +176,10 @@ public Vector<Hashtag> findAllHashtags() throws IllegalArgumentException {
     return this.aMapper.findByOwner(h);
   }
 
-//* Einfügen??? wegen Report Generator
-
   public Vector<Hashtag> getHashtagbyNutzer(Nutzer n)
       throws IllegalArgumentException {
     return this.hMapper.findByOwner(n);
   }
 
- 
-  
 }
 
