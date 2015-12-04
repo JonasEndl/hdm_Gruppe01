@@ -1,9 +1,8 @@
-Package de.hdm.itprojekt.shared.report;
+package de.hdm.itprojekt.shared.report;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import de.hdm.itprojekt.shared.Paragraph;
 
 /*
  * Basisklasse aller Reports.
