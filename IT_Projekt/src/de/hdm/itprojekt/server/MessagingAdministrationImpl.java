@@ -50,7 +50,7 @@ public class MessagingAdministrationImpl extends RemoteServiceServlet
   }
 
   
-  public void save(Nutzer n) throws IllegalArgumentException {
+  public void  save(Nutzer n) throws IllegalArgumentException {
     nMapper.update(n);
   }
 
