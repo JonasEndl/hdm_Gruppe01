@@ -260,4 +260,13 @@ public class NutzerMapper {
 		 */
 		return NachrichtMapper.nachrichtMapper().findById(n);
 	}
+
+	public Vector<Unterhaltung> getUnterhaltungenOf(Nutzer n) {
+		return UnterhaltungMapper.unterhaltungMapper().findById(n);
+	}
+
+	public Vector<Hashtag> getHashtagsOf(Nutzer n) {
+		return HashtagMapper.hashtagMapper().findById(n);
+	}
+
 }
