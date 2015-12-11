@@ -3,18 +3,18 @@ package de.hdm.itprojekt.server.report;
 import java.util.Date;
 import java.util.Vector;
 
-
+// Implementierung des ReportGenerator- Interface
 public class ReportGeneratorImpl extends RemoteServiceServlet
     implements ReportGenerator {
 
 // Zugriff am Administration aufgrund von Methoden notwendig
   private MessagingAdministration administration = null;
 
-
+//No-Argument Konstruktor anzulegen aufgrund von GWT
   public ReportGeneratorImpl() throws IllegalArgumentException {
   }
 
- 
+ //Initialisierungsmethode
   public void init() throws IllegalArgumentException {
     
 
@@ -23,12 +23,12 @@ public class ReportGeneratorImpl extends RemoteServiceServlet
     this.administration = a;
   }
 
-  
+  //protected aufgrund internen gebrauch
   protected MessagingAdministration getMessagingAdministration() {
     return this.administration;
   }
 
- 
+ //Setzen des dazugehörigen Nutzers
   public void setNutzer(Nutzer n) {
     this.administration.setNutzer(n);
   }
