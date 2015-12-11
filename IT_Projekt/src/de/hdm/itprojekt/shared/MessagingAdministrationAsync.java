@@ -2,63 +2,119 @@ package de.hdm.itprojekt.shared;
 
 import java.util.Vector;
 
+// Das asynchrone Gegenstück zum Interface MessagingAdmin
 
 public interface MessagingAdministrationAsync {
 	
-void createNutzer(Nutzer n, AsyncCallback<Nutzer> callback);
+//Erstellen des Nutzers-->AsyncCallback
 
-void save(Nutzer n, AsyncCallback<Void> callback);
+	void createNutzer(Nutzer n, AsyncCallback<Nutzer> callback);
 
-void delete(Nutzer n, AsyncCallback<Void> callback);
+//Speichern des Nutzers-->AsyncCallback
 
-void createAbonnement(Abonnement a, AsyncCallback<Abonnement> callback);
+	void saveNutzer(Nutzer n, AsyncCallback<Void> callback);
+	
+//Löschen des Nutzers-->AsyncCallback
 
-void save(Abonnement a, AsyncCallback<Void> callback);
+	void deleteNutzer(Nutzer n, AsyncCallback<Void> callback);
 
-void delete(Abonnement a, AsyncCallback<Void> callback);
+/*Erstellen des Abos-->AsyncCallback
+ * Anpassung an NutzerAbo+ HAshtag Abo!!
+ */
+	void createAbonnement(Abonnement a, AsyncCallback<Abonnement> callback);
 
-void createUnterhaltung(Unterhaltung u, AsyncCallback<Unterhaltung> callback);
+//Speichern des Abos-->AsyncCallback
+	
+	void saveAbonnement(Abonnement a, AsyncCallback<Void> callback);
+	
+//Löschen des Abos-->AsyncCallback
 
-void save(Unterhaltung u, AsyncCallback<Void> callback);
+	void deleteAbonnement(Abonnement a, AsyncCallback<Void> callback);
 
-void delete(Unterhaltung u, AsyncCallback<Void> callback);
+//Erstellen der Unterhaltung-->AsyncCallback
+	
+	void createUnterhaltung(Unterhaltung u, AsyncCallback<Unterhaltung> callback);
+	
+//Speichern des Unterhaltung-->AsyncCallback
 
-void createHashtag(Hashtag h, AsyncCallback<Hashtag> callback);
+	void saveUnterhaltung(Unterhaltung u, AsyncCallback<Void> callback);
 
-void save(Hashtag h, AsyncCallback<Void> callback);
+//Löschen des Unterhaltung-->AsyncCallback
+	
+	void deleteUnterhaltung(Unterhaltung u, AsyncCallback<Void> callback);
 
-void delete(Hashtag h, AsyncCallback<Void> callback);
+//Erstellen des Hashtags-->AsyncCallback
+	
+	void createHashtag(Hashtag h, AsyncCallback<Hashtag> callback);
 
-void createNachricht(Nachricht na, AsyncCallback<Nachricht> callback);
+//speichern des Hashtags-->AsyncCallback
+	
+	void saveHashtag(Hashtag h, AsyncCallback<Void> callback);
 
-void save(Nachricht na, AsyncCallback<Void> callback);
+//Löschen des Hashtags-->AsyncCallback
+	
+	void deleteHashtag(Hashtag h, AsyncCallback<Void> callback);
 
-void delete(Nachricht na, AsyncCallback<Void> callback);
+//Erstellen der Nachricht-->AsyncCallback
+	
+	void createNachricht(Nachricht na, AsyncCallback<Nachricht> callback);
 
+//Speichern der Nachricht-->AsyncCallback
+	
+	void saveNachricht(Nachricht na, AsyncCallback<Void> callback);
 
-void init(AsyncCallback<Void> callback);
+//Löschen der Nachricht-->AsyncCallback
+	
+	void deleteNachricht(Nachricht na, AsyncCallback<Void> callback);
 
+//Initialisierungsmethode-->AsyncCallback
+	
+	void init(AsyncCallback<Void> callback);
 
-void getNutzerById(int id, AsyncCallback<Nutzer> callback);
+//Nutzer durch ID finden-->AsyncCallback
+	
+	void getNutzerById(int id, AsyncCallback<Nutzer> callback);
 
-void getHashtagById(int id, AsyncCallback<Hashtag> callback);
+//Hashtag durch ID finden-->AsyncCallback
+	
+	void getHashtagById(int id, AsyncCallback<Hashtag> callback);
 
-void getAbonnementById(int id, AsyncCallback<Abonnement> callback);
+/*Abos durch ID finden-->AsyncCallback
+ * Abos anpassen!!
+ */
+	void getAbonnementById(int id, AsyncCallback<Abonnement> callback);
 
-void getUnterhaltungById(int id, AsyncCallback<Unterhaltung> callback);
+//Unterhaltung durch ID finden-->AsyncCallback
+	
+	void getUnterhaltungById(int id, AsyncCallback<Unterhaltung> callback);
 
-void getNachrichtById(int id, AsyncCallback<Nachricht> callback);
+//Nachricht durch ID finden-->AsyncCallback
+	
+	void getNachrichtById(int id, AsyncCallback<Nachricht> callback);
 
+//Alle Hashtags finden-->AsyncCallback
+	
+	void findAllHashtags(AsyncCallback<Vector<Hashtag>> callback);
 
-void findAllHashtags(AsyncCallback<Vector<Hashtag>> callback);
+//Nachrichten durch Nutzer finden-->AsyncCallback
+	
+	void getNachrichtenByNutzer(AsyncCallback<Vector<Nachricht>> callback);
 
-void getNachrichtenByNutzer(AsyncCallback<Vector<Nachricht>> callback);
+/* NutzerAbos durch Nutzer finden -->AsyncCallback
+ * Anpassung der Abos!!!
+ */
+	
+	void getAbonnementByNutzer(AsyncCallback<Vector<Abonnement>> callback);
 
-void getAbonnementByNutzer(AsyncCallback<Vector<Abonnement>> callback);
+	/* HashtagAbos durch Nutzer finden -->AsyncCallback
+	 * Anpassung der Abos!!!
+	 */
+	
+	void getAbonnementByHashtag(AsyncCallback<Vector<Abonnement>> callback);	
 
-void getAbonnementByHashtag(AsyncCallback<Vector<Abonnement>> callback);	
-
-void getHashtagByNutzer(AsyncCallback<Vector<Hashtag>> callback);
-
+	/* Hashtag durch Nutzer finden -->AsyncCallback
+	 */
+	
+	void getHashtagByNutzer(AsyncCallback<Vector<Hashtag>> callback);
 }
 
