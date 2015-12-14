@@ -3,7 +3,8 @@ package de.hdm.itprojekt.shared.report;
 import java.io.Serializable;
 
 /**
- * Spalte eine <code>Row</code>- Objects inklusive Serializable Interface. So kann eine Kopie vom Server
+ * Spalte eine <code>Row</code>-Objekts. <code>Column</code>-Objekte implementieren das
+ * <code>Serializable</code>-Interface. So kann eine Kopie vom Server
  * an den Client übertragen werden.
  * @author Teuta
  */
@@ -14,22 +15,40 @@ public class Column implements Serializable{
 	
 /**
  * 
- * Wert Spaltenobjekt entspricht Zeileneintrag der Tabelle
+ * Der Wert eines Spaltenobjekt entspricht dem Zeileneintrag einer Tabelle.
+ * Ein einfacher textueller Wert wird realisiert.
  */
 
 	
 	private String value = "";
 	
 /**
- * No-Argument Konstruktor
- */
+* <p>
+* Serialisierbare Klassen, die mittels GWT-RPC transportiert werden sollen,
+* müssen einen No-Argument-Konstruktor besitzen. Ist kein Konstruktor
+* explizit angegeben, so existiert in Java-Klassen der Default-Konstruktor,
+* der dem No-Argument-Konstruktor entspricht.
+* </p>
+* <p>
+* Besitzt eine Klasse mind. einen explizit implementierten Konstruktor, so
+* gelten nur diese explizit implementierten Konstruktoren. Der
+* Default-Konstruktor gilt dann nicht. Wenn wir in einer solchen Situation
+* aber dennoch einen No-Argument-Konstruktor benötigen, müssen wir diesen wie
+* in diesem Beispiel explizit implementieren.
+* </p>
+* 
+* @see #Column(String)
+* @see SimpleParagraph#SimpleParagraph()
+*/
 	
 	public Column() {
 	}
 	
 /**
- * Konstruktor. Erzwingt die Angabe eines Werts(Spalteneintrag).
+ * Dieser Konstruktor erzwingt die Angabe eines Werts (Spalteneintrag).
+ * 
  * @param s der Wert, der durch das Column- Objekt dargestellt werden soll.
+ * @see #Column()
  */
 	
 	public Column(String s) {
@@ -38,6 +57,7 @@ public class Column implements Serializable{
 	
 /**
  * Auslesen des Spaltenwerts.
+ * 
  * @return der Eintrag als String
  */
 	public String getValue() {
@@ -48,6 +68,7 @@ public class Column implements Serializable{
 
 /**
  * Überschreiben des aktuellen Spaltenwerts.
+ * 
  * @param value neuer Spaltenwert
  */
 	public void setValue(String value) {
@@ -55,8 +76,9 @@ public class Column implements Serializable{
 	}
 
 /**
- * Umwandeln des <code>Column</code>- Objekts in einen String.
+ * Umwandeln des <code>Column</code>-Objekts in einen String.
  *
+ *@see java.lang.Object
  */
 	public String toString() {
 		return this.value;
