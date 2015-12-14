@@ -213,7 +213,7 @@ public class NutzerAboMapper {
 	 * Löschen der Daten eines <code>NutzerAbo</code>-Objekts aus der Datenbank.
 	 * 
 	 * @param nab
-	 *            das aus der DB zu löschende "Objekt"
+	 *           das aus der DB zu löschende "Objekt"
 	 */
 
 	public void delete(NutzerAbo nab) {

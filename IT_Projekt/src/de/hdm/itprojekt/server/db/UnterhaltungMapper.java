@@ -211,7 +211,7 @@ public class UnterhaltungMapper {
 		} catch (SQLException e2) {
 			e2.printStackTrace();
 		}
-		// Um Analogie zu insert(Hashtag h) zu wahren, geben wir u zurück
+		// Um Analogie zu insert(Unterhaltung u) zu wahren, geben wir u zurück
 		return u;
 	}
 

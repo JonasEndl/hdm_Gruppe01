@@ -161,7 +161,7 @@ public class HashtagMapper {
 			 * Zunächst schauen wir nach, welches der momentan höchste
 			 * Primärschlüsselwert ist.
 			 */
-			ResultSet rs = stmt.executeQuery("SELECT MAX(id) AS maxid " + "FROM Nachricht ");
+			ResultSet rs = stmt.executeQuery("SELECT MAX(id) AS maxid " + "FROM Unterhaltung ");
 			// Wenn wir etwas zurückerhalten, kann dies nur einzeilig sein
 			if (rs.next()) {
 				/*
@@ -180,12 +180,12 @@ public class HashtagMapper {
 		}
 
 		/*
-		 * Rückgabe, der evtl. korrigierten Nachricht.
+		 * Rückgabe, der evtl. korrigierten Hashtag.
 		 * 
 		 * HINWEIS: Da in Java nur Referenzen auf Objekte und keine physischen
-		 * Objekte übergeben werden, wäre die Anpassung des Nachricht-Objekts
+		 * Objekte übergeben werden, wäre die Anpassung des Hashtag-Objekts
 		 * auch ohne diese explizite Rückgabe außerhalb dieser Methode sichtbar.
-		 * Die explizite Rückgabe von n ist eher ein Stilmittel, um zu
+		 * Die explizite Rückgabe von h ist eher ein Stilmittel, um zu
 		 * signalisieren, dass sich das Objekt evtl. im Laufe der Methode
 		 * verändert hat.
 		 */
@@ -196,7 +196,7 @@ public class HashtagMapper {
 	/**
 	 * Wiederholtes Schreiben eines Objekts in die Datenbank.
 	 * 
-	 * @param n
+	 * @param h
 	 *            das Objekt, das in die DB geschrieben werden soll
 	 * @return das als Parameter übergebene Objekt
 	 */

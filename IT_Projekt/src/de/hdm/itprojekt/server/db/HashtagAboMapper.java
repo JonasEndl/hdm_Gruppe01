@@ -224,7 +224,7 @@ public class HashtagAboMapper {
 	 * Datenbank.
 	 * 
 	 * @param ha
-	 *            das aus der DB zu löschende "Objekt"
+	 *           das aus der DB zu löschende "Objekt"
 	 */
 
 	public void delete(HashtagAbo ha) {
