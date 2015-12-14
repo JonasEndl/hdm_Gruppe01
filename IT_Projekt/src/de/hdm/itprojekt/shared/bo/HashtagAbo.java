@@ -1,22 +1,25 @@
 package de.hdm.itprojekt.shared.bo;
 public class HashtagAbo extends Abonnement{
 	
+	/**
+	 * Attribute eines Hashtagabos
+	 */
 
 	private static final long serialVersionUID = 1L;
-	private int aboHashtagID;
+	private int hasthtagAboID;
 	private Abonnement hashtagAbo;
 
 	public HashtagAbo () {
 		
 	}
 	
-	public int getAborHashtagID () {
-		return aboHashtagID;
+	public int gethasthtagAboID () {
+		return hasthtagAboID;
 	}
 	
 	
-	public void setAbHashtagID (int aboHashtagID) {
-		this.aboHashtagID = aboHashtagID;
+	public void setAbHashtagID (int hasthtagAboID) {
+		this.hasthtagAboID = hasthtagAboID;
 	}
 	
 	public Abonnement getHashtagAbonnement () {
