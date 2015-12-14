@@ -3,17 +3,6 @@ package de.hdm.itprojekt.server.db;
 import java.sql.*;
 import java.util.Vector;
 
-/**
- * Mapper-Klasse, die <code>Hashtag</code>-Objekte auf eine relationale
- * Datenbank abbildet. Hierzu wird eine Reihe von Methoden zur Verfügung
- * gestellt, mit deren Hilfe z.B. Objekte gesucht, erzeugt, modifiziert und
- * gelöscht werden können. Das Mapping ist bidirektional. D.h., Objekte können
- * in DB-Strukturen und DB-Strukturen in Objekte umgewandelt werden.
- * <p>
- * 
- * 
- * @author Thies
- */
 
 public class HashtagMapper {
 
