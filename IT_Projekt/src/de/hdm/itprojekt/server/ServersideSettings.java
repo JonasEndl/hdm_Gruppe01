@@ -1,5 +1,7 @@
 import java.util.logging.Logger;
 
+//Klasse mit Eigenschaften und Diensten, die für alle Serverseitige Klassen wichtig sind
+
 
 public class ServersideSettings extends CommonSettings {
 
