@@ -3,28 +3,12 @@ package de.hdm.itprojekt.server.db;
 import java.sql.*;
 import java.util.Vector;
 
-/**
- * Mapper-Klasse, die <code>Nachrichten</code>-Objekte auf eine relationale
- * Datenbank abbildet. Hierzu wird eine Reihe von Methoden zur Verfügung
- * gestellt, mit deren Hilfe z.B. Objekte gesucht, erzeugt, modifiziert und
- * gelöscht werden können. Das Mapping ist bidirektional. D.h., Objekte können
- * in DB-Strukturen und DB-Strukturen in Objekte umgewandelt werden.
- * <p>
- * 
- * 
- * @author Thies
- */
+
 
 public class NachrichtenMapper {
 
 	/**
-	 * Die Klasse NachrichtenMapper wird nur einmal instantiiert. Man spricht
-	 * hierbei von einem sogenannten <b>Singleton</b>.
-	 * <p>
-	 * Diese Variable ist durch den Bezeichner <code>static</code> nur einmal
-	 * für sämtliche eventuellen Instanzen dieser Klasse vorhanden. Sie
-	 * speichert die einzige Instanz dieser Klasse.
-	 * 
+	 * Die Klasse NachrichtenMapper wird nur einmal instantiiert.
 	 */
 
 	private static NachrichtenMapper nachrichtMapper = null;
@@ -44,13 +28,6 @@ public class NachrichtenMapper {
 	 * Singleton-Eigenschaft sicher, indem Sie dafür sorgt, dass nur eine
 	 * einzige Instanz von <code>NachrichtenMapper</code> existiert.
 	 * <p>
-	 * 
-	 * <b>Fazit:</b> NachrichtMapper sollte nicht mittels <code>new</code>
-	 * instantiiert werden, sondern stets durch Aufruf dieser statischen
-	 * Methode.
-	 * 
-	 * @return DAS <code>NachrichtenMapper</code>-Objekt.
-	 * @see nachrichtenMapper
 	 */
 
 	public static NachrichtenMapper nachrichtMapper() {
@@ -61,8 +38,7 @@ public class NachrichtenMapper {
 	}
 
 	/**
-	 * Suchen eines Nuters mit vorgegebener ID. Da diese eindeutig ist, wird
-	 * genau ein Objekt zurückgegeben.
+	 * Suchen eines Nutzers mit vorgegebener ID. 
 	 * 
 	 * @param id
 	 *            Primärschlüsselattribut (->DB)
