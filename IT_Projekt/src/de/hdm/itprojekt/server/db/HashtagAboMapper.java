@@ -219,6 +219,7 @@ public class HashtagAboMapper {
 		return ha;
 	}
 
+	
 	/**
 	 * Löschen der Daten eines <code>HashtagAbo</code>-Objekts aus der
 	 * Datenbank.
