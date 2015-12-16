@@ -19,18 +19,19 @@ public interface MessagingAdministrationAsync {
 	void deleteNutzer(Nutzer n, AsyncCallback<Void> callback);
 
 /*Erstellen des Abos-->AsyncCallback
- * Anpassung an NutzerAbo+ HAshtag Abo!!
  */
-	void createAbonnement(Abonnement a, AsyncCallback<Abonnement> callback);
-
+	void createNutzerAbo(NutzerAbo na, AsyncCallback<NutzerAbo> callback);
+	void createHashtagAbo(HashtagAbo ha, AsyncCallback<HashtagAbo> callback);
+	
 //Speichern des Abos-->AsyncCallback
 	
-	void saveAbonnement(Abonnement a, AsyncCallback<Void> callback);
+	void saveNutzerAbo(NutzerAbo na, AsyncCallback<NutzerAbo> callback);
+	void saveHashtagAbo(HashtagAbo ha, AsyncCallback<HashtagAbo> callback);
 	
 //Löschen des Abos-->AsyncCallback
 
-	void deleteAbonnement(Abonnement a, AsyncCallback<Void> callback);
-
+	void deleteNutzerAbo(NutzerAbo na, AsyncCallback<NutzerAbo> callback);
+	void deleteHashtagAbo(HashtagAbo ha, AsyncCallback<HashtagAbo> callback);
 //Erstellen der Unterhaltung-->AsyncCallback
 	
 	void createUnterhaltung(Unterhaltung u, AsyncCallback<Unterhaltung> callback);
@@ -80,10 +81,11 @@ public interface MessagingAdministrationAsync {
 	void getHashtagById(int id, AsyncCallback<Hashtag> callback);
 
 /*Abos durch ID finden-->AsyncCallback
- * Abos anpassen!!
+ 
  */
-	void getAbonnementById(int id, AsyncCallback<Abonnement> callback);
-
+	void getNutzerAboById(int id, AsyncCallback<NutzerAbo> callback);
+	void getHashtagAboById(int id, AsyncCallback<HashtagAbo> callback);
+	
 //Unterhaltung durch ID finden-->AsyncCallback
 	
 	void getUnterhaltungById(int id, AsyncCallback<Unterhaltung> callback);
@@ -101,20 +103,30 @@ public interface MessagingAdministrationAsync {
 	void getNachrichtenByNutzer(AsyncCallback<Vector<Nachricht>> callback);
 
 /* NutzerAbos durch Nutzer finden -->AsyncCallback
- * Anpassung der Abos!!!
+ 
  */
 	
-	void getAbonnementByNutzer(AsyncCallback<Vector<Abonnement>> callback);
+	void getNutzerAbo(AsyncCallback<Vector<NutzerAbo>> callback);
 
 	/* HashtagAbos durch Nutzer finden -->AsyncCallback
-	 * Anpassung der Abos!!!
+	
 	 */
 	
-	void getAbonnementByHashtag(AsyncCallback<Vector<Abonnement>> callback);	
+	void getHashtagAbo(AsyncCallback<Vector<HashtagAbo>> callback);	
 
 	/* Hashtag durch Nutzer finden -->AsyncCallback
 	 */
 	
 	void getHashtagByNutzer(AsyncCallback<Vector<Hashtag>> callback);
+	
+	//Alle Nutzer
+	void getAllNutzer(AsyncCallback<Vector<Nutzer>> callback);
+	
+	/*Alle Nutzer, die man noch abonnieren kann,
+		also noch nicht abonniert wurden.
+	*/
+
+	void getAllAbonnierbareNutzer(AsyncCallback<Vector<Nutzer>> callback);
+
 }
 
