@@ -64,13 +64,13 @@ public Vector<Nachricht> getNachrichtbyNutzer(Nutzer n)
 /*NutzerAbos finden
  */
 
-public Vector<NutzerAbo> getNutzerAbo(NutzerAbo na)
+public Vector<NutzerAbo> getAllNutzerAbo()
     throws IllegalArgumentException;
 
 /*HashtagAbos finden
  */
 
-public Vector<HashtagAbo> getHashtagAbo(Hashtagabo ha)
+public Vector<HashtagAbo> getAllHashtagAbo()
     throws IllegalArgumentException;
 
 /*Hashtags anhand eines Nutzers finden

@@ -3,6 +3,16 @@ package de.hdm.itprojekt.server;
 
 import java.util.Vector;
 
+import de.hdm.itprojekt.server.db.HashtagAboMapper;
+import de.hdm.itprojekt.server.db.HashtagMapper;
+import de.hdm.itprojekt.server.db.NachrichtenMapper;
+import de.hdm.itprojekt.server.db.NutzerAboMapper;
+import de.hdm.itprojekt.server.db.NutzerMapper;
+import de.hdm.itprojekt.server.db.UnterhaltungMapper;
+import de.hdm.itprojekt.shared.bo.HashtagAbo;
+import de.hdm.itprojekt.shared.bo.Nutzer;
+import de.hdm.itprojekt.shared.bo.NutzerAbo;
+
 
 //Implementierungsklasse des Interface von MessagingAdmin
 
@@ -22,36 +32,38 @@ public class MessagingAdministrationImpl extends RemoteServiceServlet
   */
   
   
-  /* Anpassung der MapperKlassen fehlt noch!!!!
-   * NutzerAbo + HashtagAbo  
+  /* Anpassung der MapperKlassen
+   
    */
   
   private NutzerMapper nMapper = null;
+  
+  private HashtagAboMapper haMapper = null;
 
-  private AbonnementMapper aMapper = null;
+  private NutzerAboMapper nabMapper= null;
 
   private HashtagMapper hMapper = null;
 
   private UnterhaltungMapper uMapper = null;
   
-  private NachrichtMapper naMapper = null;
+  private NachrichtenMapper naMapper = null;
 
 // Durch GWT ein No-argument Konstruktor nötig
   public MessagingAdministrationImpl() throws IllegalArgumentException {
    
   }
 /*Initialisierungsmethode
- * Anpassung fehlt noch!!
- * NutzerAbo + HashtagAbo
+ * Anpassung erfolgt
  */
   
   public void init() throws IllegalArgumentException {
     
     this.nMapper = NutzerMapper.nutzerMapper();
-    this.aMapper = AbonnementMapper.abonnementMapper();
+    this.haMapper= HashtagAboMapper.hashtagAboMapper();
+    this.nabMapper = NutzerAboMapper.nutzerAboMapper();
     this.hMapper = HashtagMapper.hashtagMapper();
     this.uMapper = UnterhaltungMapper.unterhaltungMapper();
-    this.naMapper = NachrichtMapper.nachrichtMapper();
+    this.naMapper = NachrichtenMapper.nachrichtMapper();
   }
 
  
@@ -59,14 +71,14 @@ public class MessagingAdministrationImpl extends RemoteServiceServlet
   public Nutzer createNutzer(Nutzer n) throws IllegalArgumentException {
     Nutzer n = new Nutzer();
 
-     n.setId(1);
+     n.setID(1);
 
     return this.nMapper.insert(n);
   }
 
  //Nutzer anhand der ID finden
   public Nutzer getNutzerById(int id) throws IllegalArgumentException {
-    return this.nMapper.findByKey(id);
+    return this.nMapper.findById(id);
   }
 
   //Nutzer speichern
@@ -90,7 +102,7 @@ public Hashtag createHashtag(Hashtag h) throws IllegalArgumentException {
 
  //Hashtag finden anhand der ID
   public Hashtag getHashtagById(int id) throws IllegalArgumentException {
-    return this.hMapper.findByKey(id);
+    return this.hMapper.findById(id);
   }
 
  
@@ -104,31 +116,53 @@ public Hashtag createHashtag(Hashtag h) throws IllegalArgumentException {
    this.hMapper.delete(h);
   }
 
-// Abo anpassen!!
-//Abo erstellen
-public Abonnement createAbonnement ( Abonnement a) throws IllegalArgumentException {
-    Abonnement a = new Abonnement();
+// Abo erstellen
+  
+public HashtagAbo createHashtagAbo ( HashtagAbo ha) throws IllegalArgumentException {
+    HashtagAbo ha = new HashtagAbo();
 
-     a.setId(1);
+     ha.setID(1);
 
-    return this.aMapper.insert(a);
+    return this.haMapper.insert(ha);
+  }
+
+public NutzerAbo createNutzerAbo ( NutzerAbo nab) throws IllegalArgumentException {
+    NutzerAbo nab = new NutzerAbo();
+
+     nab.setID(1);
+
+    return this.nabMapper.insert(nab);
   }
 
  //Abo finden anhand der ID
-  public Abonnement getAbonnementById(int id) throws IllegalArgumentException {
-    return this.aMapper.findByKey(id);
+  public NutzerAbo getNutzerAboById(int id) throws IllegalArgumentException {
+    return this.nabMapper.findById(id);
   }
 
  
+  public HashtagAbo getHashtagAboById(int id) throws IllegalArgumentException {
+	    return this.haMapper.findById(id);
+	  }
+
+	 
 //Abo speichern
-  public void saveAbonnement( Abonnement a) throws IllegalArgumentException {
-    aMapper.update(a);
+  public void saveNutzerAbo( NutzerAbo nab) throws IllegalArgumentException {
+    nabMapper.update(nab);
   }
+  
+  public void saveHashtagAbo( HashtagAbo ha) throws IllegalArgumentException {
+	    haMapper.update(ha);
+	  }
 //Abo löschen
-  public void deleteAbonnement( Abonnement a) throws IllegalArgumentException {
+  public void deleteNutzerAbo( NutzerAbo nab) throws IllegalArgumentException {
     
-    this.aMapper.delete(a);
+    this.nabMapper.delete(nab);
   }
+  
+  public void deleteHashtagAbo( HashtagAbo ha) throws IllegalArgumentException {
+	    
+	    this.haMapper.delete(ha);
+	  }
 //Unterhaltung erstellen
  public Unterhaltung createUnterhaltung (Unterhaltung u) throws IllegalArgumentException {
     Unterhaltung u = new Unterhaltung ();
@@ -140,7 +174,7 @@ public Abonnement createAbonnement ( Abonnement a) throws IllegalArgumentExcepti
 
  //Unterhaltung finden anhand der ID
   public Unterhaltung  getUnterhaltungById(int id) throws IllegalArgumentException {
-    return this.uMapper.findByKey(id);
+    return this.uMapper.findById(id);
   }
 //Unterhaltung speichern
   public void saveUnterhaltung(Unterhaltung u) throws IllegalArgumentException {
@@ -163,7 +197,7 @@ public Abonnement createAbonnement ( Abonnement a) throws IllegalArgumentExcepti
 
  //Nachricht anhand der ID finden
   public Nachricht getNachrichtById(int id) throws IllegalArgumentException {
-    return this.naMapper.findByKey(id);
+    return this.naMapper.findById(id);
   }
 //Nachricht speichern
   public void saveNachricht(Nachricht  na) throws IllegalArgumentException {
@@ -185,23 +219,41 @@ public Vector<Hashtag> findAllHashtags() throws IllegalArgumentException {
       throws IllegalArgumentException {
     return this.naMapper.findByOwner(n);
   }
-  /*Anpassung an Nutzerabo+ Hashtagabo
-   */Nutzerabos vom Nutzer finden
+  /*Nutzerabos vom Nutzer finden
+   */
   
-   public Vector<Abonnement> getAbonnementbyNutzer(Nutzer n)
+   public Vector<NutzerAbo> getAllNutzerAbo()
       throws IllegalArgumentException {
-    return this.aMapper.findByOwner(n);
+    return this.nabMapper.findAll();
   }
+   
 //Hashtagabos vom Nutzer finden
-  public Vector<Abonnement> getAbonnementbyNutzer(Hashtag h)
+  public Vector<HashtagAbo> getAllHashtagAbo()
       throws IllegalArgumentException {
-    return this.aMapper.findByOwner(h);
+    return this.haMapper.findAll();
   }
 // Hashtags vom Nutzer finden
   public Vector<Hashtag> getHashtagbyNutzer(Nutzer n)
       throws IllegalArgumentException {
     return this.hMapper.findByOwner(n);
   }
+//Alle Nutzer
+  
+public Vector<Nutzer>getAllNutzer() 
+		throws IllegalArgumentException {
+	return this.nMapper.findAll();
+}
+
+/*Alle Nutzer, die man noch abonnieren kann,
+	also noch nicht abonniert wurden.
+*/
+
+
+public Vector<Nutzer>getAllAbonnierbareNutzer()
+		throws IllegalArgumentException {
+	// Fehlt noch!!
+}
 
 }
+
 
