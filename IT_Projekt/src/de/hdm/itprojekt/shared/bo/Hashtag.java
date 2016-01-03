@@ -9,7 +9,7 @@ public class Hashtag extends BusinessObject {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Die Variablen deklarieren
+	 * Die Variablen deklarieren1
 	 */
 
 	private String schlagwort;
