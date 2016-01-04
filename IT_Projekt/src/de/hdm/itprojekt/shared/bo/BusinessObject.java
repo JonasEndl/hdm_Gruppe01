@@ -1,7 +1,9 @@
 package de.hdm.itprojekt.shared.bo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
+
+
 
 /** 
  * Superklasse von Abonnement
@@ -15,7 +17,7 @@ public abstract class BusinessObject implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id = 0;
-	private Date erstellungszeitpunkt;
+	private Timestamp erstellungszeitpunkt = new Timestamp(0);
 	
 	/**
 	 * Konstruktor
@@ -44,11 +46,11 @@ public abstract class BusinessObject implements Serializable {
 	 * auslesen Erstellungszeit
 	 * @return erstellungszeit
 	 */
-	public Date getErstellungszeitpunkt(){
+	public Timestamp getErstellungszeitpunkt(){
 		return this.erstellungszeitpunkt;
 	}
 	
-	public void setErstellungszeitpunkt(Date erstellungszeitpunkt){
+	public void setErstellungszeitpunkt(Timestamp erstellungszeitpunkt){
 		this.erstellungszeitpunkt = erstellungszeitpunkt;
 	}
 	
