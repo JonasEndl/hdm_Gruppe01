@@ -8,6 +8,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import de.hdm.itprojekt.shared.bo.Nutzer; 
 
 
+//LoginServiceImpl Klasse
 
 public class LoginServiceImpl extends RemoteServiceServlet implements LoginService{
 
