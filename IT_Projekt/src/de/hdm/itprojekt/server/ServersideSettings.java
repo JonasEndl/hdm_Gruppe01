@@ -1,4 +1,8 @@
+package de.hdm.itprojekt.server;
+
 import java.util.logging.Logger;
+
+import de.hdm.itprojekt.shared.CommonSettings;
 
 //Klasse mit Eigenschaften und Diensten, die für alle Serverseitige Klassen wichtig sind
 
