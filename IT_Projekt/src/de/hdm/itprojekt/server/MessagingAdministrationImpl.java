@@ -3,6 +3,8 @@ package de.hdm.itprojekt.server;
 
 import java.util.Vector;
 
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+
 import de.hdm.itprojekt.server.db.HashtagAboMapper;
 import de.hdm.itprojekt.server.db.HashtagMapper;
 import de.hdm.itprojekt.server.db.NachrichtenMapper;
