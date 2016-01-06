@@ -109,7 +109,7 @@ public Hashtag createHashtag(Hashtag h) throws IllegalArgumentException {
     hMapper.update(h);
   }
 //Hashtag löschen
-  public void delete( Hashtag h) throws IllegalArgumentException {
+  public void deleteHashtag( Hashtag h) throws IllegalArgumentException {
     
    this.hMapper.delete(h);
   }
@@ -252,11 +252,6 @@ public Vector<Nutzer>getAllAbonnierbareNutzer()
 			return null;
 	// Fehlt noch!!
 }
-public void deleteHashtag(Hashtag h) throws IllegalArgumentException {
-	// TODO Auto-generated method stub
-	
-}
-
 }
 
 
