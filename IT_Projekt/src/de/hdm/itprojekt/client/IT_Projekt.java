@@ -53,16 +53,14 @@ public class IT_Projekt implements EntryPoint {
 		mainPanel.addStyleName("mainPanel");
 		
 		 profil.addClickHandler(new ClickHandler() {
-		      @Override
-			public void onClick(ClickEvent event) {
+		      public void onClick(ClickEvent event) {
 		        RootPanel.get("Content").clear();
 		        RootPanel.get("Content").add(new Profil());
 		      }
 		    });
 		
 		 nachrichten.addClickHandler(new ClickHandler() {
-		      @Override
-			public void onClick(ClickEvent event) {
+		      public void onClick(ClickEvent event) {
 		        RootPanel.get("Content").clear();
 		        RootPanel.get("Content").add(new Nachrichten());
 		      }
