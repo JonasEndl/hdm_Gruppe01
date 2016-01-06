@@ -2,6 +2,9 @@ package de.hdm.itprojekt.shared;
 
 import java.util.Vector;
 
+import com.google.gwt.user.client.rpc.RemoteService;
+import de.hdm.itprojekt.shared.bo.*;
+
 // Synchrone Schnittstelle für eine RPC-fähige Klasse für die MessaginAdmin.
 
 public interface MessagingAdministration extends RemoteService {
