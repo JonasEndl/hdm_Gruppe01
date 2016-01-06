@@ -5,15 +5,10 @@ import java.util.Vector;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-import de.hdm.itprojekt.server.db.HashtagAboMapper;
-import de.hdm.itprojekt.server.db.HashtagMapper;
-import de.hdm.itprojekt.server.db.NachrichtenMapper;
-import de.hdm.itprojekt.server.db.NutzerAboMapper;
-import de.hdm.itprojekt.server.db.NutzerMapper;
-import de.hdm.itprojekt.server.db.UnterhaltungMapper;
-import de.hdm.itprojekt.shared.bo.HashtagAbo;
-import de.hdm.itprojekt.shared.bo.Nutzer;
-import de.hdm.itprojekt.shared.bo.NutzerAbo;
+import de.hdm.itprojekt.server.db.*;
+import de.hdm.itprojekt.shared.bo.*;
+import de.hdm.itprojekt.shared.*;
+
 
 
 //Implementierungsklasse des Interface von MessagingAdmin
@@ -26,7 +21,8 @@ import de.hdm.itprojekt.shared.bo.NutzerAbo;
 public class MessagingAdministrationImpl extends RemoteServiceServlet
     implements MessagingAdministration {
 
-  // Referenz auf das zugehörige Nutzer-Objekt
+
+// Referenz auf das zugehörige Nutzer-Objekt
   private Nutzer nutzer = null;
   
   /* Referenz auf die MapperKlassen, der Nutzer-Objekte
@@ -97,7 +93,7 @@ public class MessagingAdministrationImpl extends RemoteServiceServlet
 public Hashtag createHashtag(Hashtag h) throws IllegalArgumentException {
     Hashtag h = new Hashtag();
 
-     h.setId(1);
+     h.setID(1);
 
     return this.hMapper.insert(h);
   }
@@ -169,7 +165,7 @@ public NutzerAbo createNutzerAbo ( NutzerAbo nab) throws IllegalArgumentExceptio
  public Unterhaltung createUnterhaltung (Unterhaltung u) throws IllegalArgumentException {
     Unterhaltung u = new Unterhaltung ();
 
-     u.setId(1);
+     u.setID(1);
 
     return this.uMapper.insert(u);
   }
@@ -192,7 +188,7 @@ public NutzerAbo createNutzerAbo ( NutzerAbo nab) throws IllegalArgumentExceptio
  public Nachricht createNachricht  (Nachricht na) throws IllegalArgumentException {
     Nachricht na = new Nachricht ();
 
-     na.setId(1);
+     na.setID(1);
 
     return this.naMapper.insert(na);
   }
@@ -253,7 +249,12 @@ public Vector<Nutzer>getAllNutzer()
 
 public Vector<Nutzer>getAllAbonnierbareNutzer()
 		throws IllegalArgumentException {
+			return null;
 	// Fehlt noch!!
+}
+public void deleteHashtag(Hashtag h) throws IllegalArgumentException {
+	// TODO Auto-generated method stub
+	
 }
 
 }

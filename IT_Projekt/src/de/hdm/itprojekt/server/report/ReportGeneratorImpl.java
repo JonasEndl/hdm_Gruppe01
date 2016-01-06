@@ -3,6 +3,14 @@ package de.hdm.itprojekt.server.report;
 import java.util.Date;
 import java.util.Vector;
 
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+
+import de.hdm.itprojekt.server.MessagingAdministrationImpl;
+import de.hdm.itprojekt.shared.MessagingAdministration;
+import de.hdm.itprojekt.shared.ReportGenerator;
+import de.hdm.itprojekt.shared.bo.*;
+import de.hdm.itprojekt.shared.report.*;
+
 // Implementierung des ReportGenerator- Interface
 public class ReportGeneratorImpl extends RemoteServiceServlet
     implements ReportGenerator {
@@ -46,7 +54,7 @@ public class ReportGeneratorImpl extends RemoteServiceServlet
 
     imprint.addSubParagraph(new SimpleParagraph(n.getVorname()));
     imprint.addSubParagraph(new SimpleParagraph(n.getNachname()));
-    imprint.addSubParagraph(new SimpleParagraph(n.getEmailAdresse()));
+    imprint.addSubParagraph(new SimpleParagraph(n.getMailadresse()));
 
     //Impressum hinzufügen
     r.setImprint(imprint);
@@ -79,7 +87,7 @@ public class ReportGeneratorImpl extends RemoteServiceServlet
         + n.getVorname()));
 
     
-    header.addSubParagraph(new SimpleParagraph("Kd.-Nr.: " + n.getId()));
+    header.addSubParagraph(new SimpleParagraph("Kd.-Nr.: " + n.getID()));
 
     result.setHeaderData(header);
 
@@ -139,7 +147,7 @@ public class ReportGeneratorImpl extends RemoteServiceServlet
         + n.getVorname()));
 
     
-    header.addSubParagraph(new SimpleParagraph("KD-Nr.: " + n.getId()));
+    header.addSubParagraph(new SimpleParagraph("KD-Nr.: " + n.getID()));
 
     result.setHeaderData(header);
 
