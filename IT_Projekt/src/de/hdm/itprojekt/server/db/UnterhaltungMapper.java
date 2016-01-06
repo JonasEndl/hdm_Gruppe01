@@ -3,6 +3,8 @@ package de.hdm.itprojekt.server.db;
 import java.sql.*;
 import java.util.Vector;
 
+import de.hdm.itprojekt.shared.bo.*;
+
 
 public class UnterhaltungMapper {
 
@@ -77,7 +79,7 @@ public class UnterhaltungMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Unterhaltung u = new Unterhaltung();
-				u.setId(rs.getInt("id"));
+				u.setID(rs.getInt("id"));
 				u.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
 
 				return u;
@@ -113,7 +115,7 @@ public class UnterhaltungMapper {
 			// erstellt.
 			while (rs.next()) {
 				Unterhaltung u = new Unterhaltung();
-				u.setId(rs.getInt("id"));
+				u.setID(rs.getInt("id"));
 				u.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
 
 				// Hinzufügen des neuen Objekts zum Ergebnisvektor
@@ -155,12 +157,12 @@ public class UnterhaltungMapper {
 				 * na erhält den bisher maximalen, nun um 1 inkrementierten
 				 * Primärschlüssel.
 				 */
-				u.setId(rs.getInt("maxid") + 1);
+				u.setID(rs.getInt("maxid") + 1);
 
 				stmt = con.createStatement();
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
-				stmt.executeUpdate("INSERT INTO Unterhaltung (id, Erstellungszeitpunkt) " + "VALUES (" + u.getId()
-						+ ", " + u.Erstellungszeitpunkt() + ", " + ")");
+				stmt.executeUpdate("INSERT INTO Unterhaltung (id, Erstellungszeitpunkt) " + "VALUES (" + u.getID()
+						+ ", " + u.getErstellungszeitpunkt() + ", " + ")");
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -195,7 +197,7 @@ public class UnterhaltungMapper {
 			Statement stmt = con.createStatement();
 
 			stmt.executeUpdate("UPDATE `unterhaltung` SET `Erstellungszeitpunkt`='" + u.getErstellungszeitpunkt()
-					+ "' WHERE `id`= " + u.getId() + ";");
+					+ "' WHERE `id`= " + u.getID() + ";");
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -217,7 +219,7 @@ public class UnterhaltungMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			stmt.executeUpdate("DELETE FROM unterhaltung " + "WHERE id=" + u.getId());
+			stmt.executeUpdate("DELETE FROM unterhaltung " + "WHERE id=" + u.getID());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
