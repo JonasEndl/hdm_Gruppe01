@@ -3,6 +3,8 @@ package de.hdm.itprojekt.server.db;
 import java.sql.*;
 import java.util.Vector;
 
+import de.hdm.itprojekt.shared.bo.*;
+
 /**
  * Mapper-Klasse, die <code>HashtagAbo</code>-Objekte auf eine relationale
  * Datenbank abbildet. Hierzu wird eine Reihe von Methoden zur Verfügung
@@ -90,7 +92,7 @@ public class HashtagAboMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				HashtagAbo ha = new HashtagAbo();
-				ha.setId(rs.getInt("id"));
+				ha.setID(rs.getInt("id"));
 				ha.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
 
 				return ha;
@@ -125,7 +127,7 @@ public class HashtagAboMapper {
 			// erstellt.
 			while (rs.next()) {
 				HashtagAbo ha = new HashtagAbo();
-				ha.setId(rs.getInt("id"));
+				ha.setID(rs.getInt("id"));
 				ha.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
 
 				// Hinzufügen des neuen Objekts zum Ergebnisvektor
@@ -167,12 +169,12 @@ public class HashtagAboMapper {
 				 * ha erhält den bisher maximalen, nun um 1 inkrementierten
 				 * Primärschlüssel.
 				 */
-				ha.setId(rs.getInt("maxid") + 1);
+				ha.setID(rs.getInt("maxid") + 1);
 
 				stmt = con.createStatement();
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
 				stmt.executeUpdate("INSERT INTO HashtagAbo (id, Erstellungszeitpunkt) " + "VALUES ("
-						+ ha.getId() + ", " + ha.Erstellungszeitpunkt() + ",  " + ")");
+						+ ha.getID() + ", " + ha.getErstellungszeitpunkt() + ",  " + ")");
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -210,7 +212,7 @@ public class HashtagAboMapper {
 			// schlagwort=\"" +
 			// ha.gettext() + "\" " + "WHERE id=" + ha.getId());
 
-			stmt.executeUpdate("UPDATE `hashtagAbon` SET `Erstellungszeitpunkt`='" + "' WHERE `id`= " + ha.getId() + ";");
+			stmt.executeUpdate("UPDATE `hashtagAbon` SET `Erstellungszeitpunkt`='" + "' WHERE `id`= " + ha.getID() + ";");
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -235,7 +237,7 @@ public class HashtagAboMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			stmt.executeUpdate("DELETE FROM hashtagAbo " + "WHERE id=" + ha.getId());
+			stmt.executeUpdate("DELETE FROM hashtagAbo " + "WHERE id=" + ha.getID());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
