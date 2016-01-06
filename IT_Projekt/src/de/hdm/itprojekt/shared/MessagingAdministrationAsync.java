@@ -110,20 +110,21 @@ public interface MessagingAdministrationAsync {
  
  */
 	
-	void getNutzerAbo(AsyncCallback<Vector<NutzerAbo>> callback);
+	void getAllNutzerAbo(AsyncCallback<Vector<NutzerAbo>> callback);
 
 	/* HashtagAbos durch Nutzer finden -->AsyncCallback
 	
 	 */
 	
-	void getHashtagAbo(AsyncCallback<Vector<HashtagAbo>> callback);	
+	void getAllHashtagAbo(AsyncCallback<Vector<HashtagAbo>> callback);	
 
 	/* Hashtag durch Nutzer finden -->AsyncCallback
 	 */
 	
-	void getHashtagByNutzer(AsyncCallback<Vector<Hashtag>> callback);
+	void getHashtagByNutzer(Nutzer n, AsyncCallback<Vector<Hashtag>> callback);
 	
 	//Alle Nutzer
+	
 	void getAllNutzer(AsyncCallback<Vector<Nutzer>> callback);
 	
 	/*Alle Nutzer, die man noch abonnieren kann,

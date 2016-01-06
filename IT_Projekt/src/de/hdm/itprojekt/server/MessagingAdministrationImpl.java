@@ -67,7 +67,7 @@ public class MessagingAdministrationImpl extends RemoteServiceServlet
  
   //Nutzer erstellen
   public Nutzer createNutzer(Nutzer n) throws IllegalArgumentException {
-    Nutzer n = new Nutzer();
+    Nutzer nu = new Nutzer();
 
      n.setID(1);
 
@@ -90,7 +90,7 @@ public class MessagingAdministrationImpl extends RemoteServiceServlet
   }
 
 //Hashtag erstellen
-public Hashtag createHashtag(Hashtag h) throws IllegalArgumentException {
+public Hashtag createHashtag(Hashtag x) throws IllegalArgumentException {
     Hashtag h = new Hashtag();
 
      h.setID(1);
@@ -116,7 +116,7 @@ public Hashtag createHashtag(Hashtag h) throws IllegalArgumentException {
 
 // Abo erstellen
   
-public HashtagAbo createHashtagAbo ( HashtagAbo ha) throws IllegalArgumentException {
+public HashtagAbo createHashtagAbo ( HashtagAbo h) throws IllegalArgumentException {
     HashtagAbo ha = new HashtagAbo();
 
      ha.setID(1);
@@ -124,7 +124,7 @@ public HashtagAbo createHashtagAbo ( HashtagAbo ha) throws IllegalArgumentExcept
     return this.haMapper.insert(ha);
   }
 
-public NutzerAbo createNutzerAbo ( NutzerAbo nab) throws IllegalArgumentException {
+public NutzerAbo createNutzerAbo ( NutzerAbo x) throws IllegalArgumentException {
     NutzerAbo nab = new NutzerAbo();
 
      nab.setID(1);
@@ -162,7 +162,7 @@ public NutzerAbo createNutzerAbo ( NutzerAbo nab) throws IllegalArgumentExceptio
 	    this.haMapper.delete(ha);
 	  }
 //Unterhaltung erstellen
- public Unterhaltung createUnterhaltung (Unterhaltung u) throws IllegalArgumentException {
+ public Unterhaltung createUnterhaltung (Unterhaltung x) throws IllegalArgumentException {
     Unterhaltung u = new Unterhaltung ();
 
      u.setID(1);
@@ -185,7 +185,7 @@ public NutzerAbo createNutzerAbo ( NutzerAbo nab) throws IllegalArgumentExceptio
   }
 
 //Nachricht erstellen
- public Nachricht createNachricht  (Nachricht na) throws IllegalArgumentException {
+ public Nachricht createNachricht  (Nachricht x) throws IllegalArgumentException {
     Nachricht na = new Nachricht ();
 
      na.setID(1);

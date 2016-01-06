@@ -61,8 +61,8 @@ public Nachricht getNachrichtById(int id) throws IllegalArgumentException;
 public Vector<Hashtag> findAllHashtags() throws IllegalArgumentException;
 
 //Nachricht anhand eines Nutzers finden
-public Vector<Nachricht> getNachrichtbyNutzer(Nutzer n)
-    throws IllegalArgumentException;
+
+public Vector<Nachricht> getNachrichtenByNutzer() throws IllegalArgumentException;
 
 /*NutzerAbos finden
  */
@@ -79,9 +79,8 @@ public Vector<HashtagAbo> getAllHashtagAbo()
 /*Hashtags anhand eines Nutzers finden
  */
 
-public Vector<Hashtag> getHashtagbyNutzer(Nutzer n)
-  
-	throws IllegalArgumentException;
+public Vector<Hashtag> getHashtagByNutzer(Nutzer n)
+		throws IllegalArgumentException;
 
 //Alle Nutzer
 public Vector<Nutzer>getAllNutzer() 
