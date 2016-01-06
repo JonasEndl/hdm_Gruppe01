@@ -1,5 +1,11 @@
 package de.hdm.itprojekt.shared;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
+
+import de.hdm.itprojekt.shared.bo.Nutzer;
+import de.hdm.itprojekt.shared.report.AllAbonnementOfNutzerReport;
+import de.hdm.itprojekt.shared.report.AllNachrichtOfNutzerReport;
+
 
 // Das asynchrone Gegenstück des Interfaces ReportGenerator 
 
