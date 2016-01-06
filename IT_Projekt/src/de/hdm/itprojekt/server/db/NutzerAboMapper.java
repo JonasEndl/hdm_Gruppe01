@@ -3,6 +3,8 @@ package de.hdm.itprojekt.server.db;
 import java.sql.*;
 import java.util.Vector;
 
+import de.hdm.itprojekt.shared.bo.NutzerAbo;
+
 
 
 
@@ -80,7 +82,7 @@ public class NutzerAboMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				NutzerAbo nab = new NutzerAbo();
-				nab.setId(rs.getInt("id"));
+				nab.setID(rs.getInt("id"));
 				nab.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
 				
 
@@ -115,8 +117,8 @@ public class NutzerAboMapper {
 			// Für jeden Eintrag im Suchergebnis wird nun ein NutzerAbo-Objekt
 			// erstellt.
 			while (rs.next()) {
-				NutzerAbon nab = new NutzerAbo();
-				nab.setId(rs.getInt("id"));
+				NutzerAbo nab = new NutzerAbo();
+				nab.setID(rs.getInt("id"));
 				nab.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
 
 
@@ -159,12 +161,12 @@ public class NutzerAboMapper {
 				 * nab erhält den bisher maximalen, nun um 1 inkrementierten
 				 * Primärschlüssel.
 				 */
-				nab.setId(rs.getInt("maxid") + 1);
+				nab.setID(rs.getInt("maxid") + 1);
 
 				stmt = con.createStatement();
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
-				stmt.executeUpdate("INSERT INTO HashtagAbo (id, Erstellungszeitpunkt, schlagwort) " + "VALUES (" + nab.getId()
-						+ ", " + nab.Erstellungszeitpunkt() + ", " + nab.schlagwort() + ", " + ")");
+				stmt.executeUpdate("INSERT INTO HashtagAbo (id, Erstellungszeitpunkt, schlagwort) " + "VALUES (" + nab.getID()
+						+ ", " + nab.getErstellungszeitpunkt() + ", " + nab.schlagwort() + ", " + ")");
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -202,7 +204,7 @@ public class NutzerAboMapper {
 			// ha.gettext() + "\" " + "WHERE id=" + ha.getId());
 
 			stmt.executeUpdate("UPDATE `nutzerAbo` SET `Erstellungszeitpunkt`='"
-					+ "' WHERE `id`= " + nab.getId() + ";");
+					+ "' WHERE `id`= " + nab.getID() + ";");
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -224,7 +226,7 @@ public class NutzerAboMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			stmt.executeUpdate("DELETE FROM nutzerAbon" + "WHERE id=" + nab.getId());
+			stmt.executeUpdate("DELETE FROM nutzerAbon" + "WHERE id=" + nab.getID());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
