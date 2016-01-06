@@ -2,8 +2,10 @@ package de.hdm.itprojekt.shared.bo;
 
 import java.util.Vector;
 
-public class Unterhaltung {
+public class Unterhaltung extends BusinessObject {
 	
+
+	private static final long serialVersionUID = 1L;
 	private Vector <Nutzer> NutzerListe;
 	private Vector <Nachricht> nachrichtenListe;
 	private Nutzer initiator;
