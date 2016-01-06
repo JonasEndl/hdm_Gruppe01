@@ -3,6 +3,8 @@ package de.hdm.itprojekt.server.db;
 import java.sql.*;
 import java.util.Vector;
 
+import de.hdm.itprojekt.shared.bo.Hashtag;
+
 
 public class HashtagMapper {
 
@@ -78,7 +80,7 @@ public class HashtagMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Hashtag h = new Hashtag();
-				h.setId(rs.getInt("id"));
+				h.setID(rs.getInt("id"));
 				h.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
 				h.setSchlagwort(rs.getString("schlagwort"));
 
@@ -114,9 +116,9 @@ public class HashtagMapper {
 			// erstellt.
 			while (rs.next()) {
 				Hashtag h = new Hashtag();
-				h.setId(rs.getInt("id"));
+				h.setID(rs.getInt("id"));
 				h.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
-				h.setschlagwort(rs.getString("schlagwort"));
+				h.setSchlagwort(rs.getString("schlagwort"));
 
 				// Hinzufügen des neuen Objekts zum Ergebnisvektor
 				result.addElement(na);
@@ -157,12 +159,12 @@ public class HashtagMapper {
 				 * na erhält den bisher maximalen, nun um 1 inkrementierten
 				 * Primärschlüssel.
 				 */
-				h.setId(rs.getInt("maxid") + 1);
+				h.setID(rs.getInt("maxid") + 1);
 
 				stmt = con.createStatement();
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
-				stmt.executeUpdate("INSERT INTO Hashtag (id, Erstellungszeitpunkt, schlagwort) " + "VALUES (" + h.getId()
-						+ ", " + h.Erstellungszeitpunkt() + ", " + h.schlagwort() + ", " + ")");
+				stmt.executeUpdate("INSERT INTO Hashtag (id, Erstellungszeitpunkt, schlagwort) " + "VALUES (" + h.getID()
+						+ ", " + h.getErstellungszeitpunkt() + ", " + h.getSchlagwort() + ", " + ")");
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -200,7 +202,7 @@ public class HashtagMapper {
 			// n.gettext() + "\" " + "WHERE id=" + n.getId());
 
 			stmt.executeUpdate("UPDATE `hashtag` SET `schlagwort`='" + h.getSchlagwort() + "',`Erstellungszeitpunkt`='"
-					+ "' WHERE `id`= " + h.getId() + ";");
+					+ "' WHERE `id`= " + h.getID() + ";");
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -222,7 +224,7 @@ public class HashtagMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			stmt.executeUpdate("DELETE FROM hashtag " + "WHERE id=" + h.getId());
+			stmt.executeUpdate("DELETE FROM hashtag " + "WHERE id=" + h.getID());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
