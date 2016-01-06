@@ -44,7 +44,7 @@ public class MessagingAdministrationImpl extends RemoteServiceServlet
 
   private UnterhaltungMapper uMapper = null;
   
-  private NachrichtenMapper naMapper = null;
+  private NachrichtMapper naMapper = null;
 
 // Durch GWT ein No-argument Konstruktor nötig
   public MessagingAdministrationImpl() throws IllegalArgumentException {
@@ -61,7 +61,7 @@ public class MessagingAdministrationImpl extends RemoteServiceServlet
     this.nabMapper = NutzerAboMapper.nutzerAboMapper();
     this.hMapper = HashtagMapper.hashtagMapper();
     this.uMapper = UnterhaltungMapper.unterhaltungMapper();
-    this.naMapper = NachrichtenMapper.nachrichtMapper();
+    this.naMapper = NachrichtMapper.nachrichtMapper();
   }
 
  
