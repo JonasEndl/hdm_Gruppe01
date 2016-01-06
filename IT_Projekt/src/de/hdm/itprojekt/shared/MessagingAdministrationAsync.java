@@ -2,6 +2,10 @@ package de.hdm.itprojekt.shared;
 
 import java.util.Vector;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
+
+import de.hdm.itprojekt.shared.bo.*;
+
 // Das asynchrone Gegenstück zum Interface MessagingAdmin
 
 public interface MessagingAdministrationAsync {
