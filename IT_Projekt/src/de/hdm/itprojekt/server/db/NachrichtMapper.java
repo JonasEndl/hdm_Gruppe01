@@ -3,15 +3,18 @@ package de.hdm.itprojekt.server.db;
 import java.sql.*;
 import java.util.Vector;
 
+import de.hdm.itprojekt.shared.bo.*;
 
 
-public class NachrichtenMapper {
+
+
+public class NachrichtMapper {
 
 	/**
 	 * Die Klasse NachrichtenMapper wird nur einmal instantiiert.
 	 */
 
-	private static NachrichtenMapper nachrichtMapper = null;
+	private static NachrichtMapper nachrichtMapper = null;
 
 	/**
 	 * Geschützter Konstruktor - verhindert die Möglichkeit, mit new neue
@@ -19,7 +22,7 @@ public class NachrichtenMapper {
 	 * 
 	 */
 
-	protected NachrichtenMapper() {
+	protected NachrichtMapper() {
 	}
 
 	/**
@@ -30,9 +33,9 @@ public class NachrichtenMapper {
 	 * <p>
 	 */
 
-	public static NachrichtenMapper nachrichtMapper() {
+	public static NachrichtMapper nachrichtMapper() {
 		if (nachrichtMapper == null) {
-			nachrichtMapper = new NachrichtenMapper();
+			nachrichtMapper = new NachrichtMapper();
 		}
 		return nachrichtMapper;
 	}
@@ -65,7 +68,7 @@ public class NachrichtenMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Nutzer na = new Nutzer();
-				na.setId(rs.getInt("id"));
+				na.setID(rs.getInt("id"));
 				na.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
 				na.setText(rs.getString("text"));
 
@@ -101,7 +104,7 @@ public class NachrichtenMapper {
 			// erstellt.
 			while (rs.next()) {
 				Nachricht na = new Nachricht();
-				na.setId(rs.getInt("id"));
+				na.setID(rs.getInt("id"));
 				na.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
 				na.setText(rs.getString("text"));
 
@@ -144,12 +147,12 @@ public class NachrichtenMapper {
 				 * na erhält den bisher maximalen, nun um 1 inkrementierten
 				 * Primärschlüssel.
 				 */
-				na.setId(rs.getInt("maxid") + 1);
+				na.setID(rs.getInt("maxid") + 1);
 
 				stmt = con.createStatement();
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
-				stmt.executeUpdate("INSERT INTO Nachricht (id, Erstellungszeitpunkt, text) " + "VALUES (" + na.getId()
-						+ ", " + na.Erstellungszeitpunkt() + ", " + na.text() + ", " + ")");
+				stmt.executeUpdate("INSERT INTO Nachricht (id, Erstellungszeitpunkt, text) " + "VALUES (" + na.getID()
+						+ ", " + na.getErstellungszeitpunkt() + ", " + na.getText() + ", " + ")");
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -187,7 +190,7 @@ public class NachrichtenMapper {
 			// n.gettext() + "\" " + "WHERE id=" + n.getId());
 
 			stmt.executeUpdate("UPDATE `nachricht` SET `text`='" + na.getvorname() + "',`Erstellungszeitpunkt`='"
-					+ "' WHERE `id`= " + na.getId() + ";");
+					+ "' WHERE `id`= " + na.getID() + ";");
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -209,7 +212,7 @@ public class NachrichtenMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			stmt.executeUpdate("DELETE FROM nachricht " + "WHERE id=" + na.getId());
+			stmt.executeUpdate("DELETE FROM nachricht " + "WHERE id=" + na.getID());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
