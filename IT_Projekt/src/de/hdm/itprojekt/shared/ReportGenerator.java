@@ -1,5 +1,11 @@
 package de.hdm.itprojekt.shared;
 
+import com.google.gwt.user.client.rpc.RemoteService;
+
+import de.hdm.itprojekt.shared.bo.Nutzer;
+import de.hdm.itprojekt.shared.report.AllAbonnementOfNutzerReport;
+import de.hdm.itprojekt.shared.report.AllNachrichtOfNutzerReport;
+
 
 /* Synchrone Schnittstelle für eine RPC-fähige Klasse
    zur Erstellung von Reports
