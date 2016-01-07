@@ -5,7 +5,9 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 
@@ -20,6 +22,9 @@ public class IT_Projekt implements EntryPoint {
 	private Button nutzer = new Button("Nutzer");
 	private Button hashtag = new Button("Hashtag");
 	private Button logout = new Button("Logout");
+	private Button meineNachrichten = new Button("Meine Nachrichten");
+	private Button aktualisieren = new Button("Aktualisieren");
+
 
 	/**
 	 * Entry point method.
@@ -33,7 +38,9 @@ public class IT_Projekt implements EntryPoint {
 		navigator.add(hashtag);
 		navigator.add(logout);
 		navigator.addStyleName("navigator");
-
+		contentPanel.add(meineNachrichten);
+		contentPanel.add(aktualisieren);
+		
 
 		// add style names to Buttons
 		profil.addStyleName("NavButton");
@@ -42,6 +49,10 @@ public class IT_Projekt implements EntryPoint {
 		nutzer.addStyleName("NavButton");
 		hashtag.addStyleName("NavButton");
 		logout.addStyleName("NavButton");
+		aktualisieren.addStyleName("ContentButton");
+		meineNachrichten.addStyleName("ContentButton");
+	
+		
 		
 		// Content Panel
 		contentPanel.addStyleName("contentPanel");
@@ -49,6 +60,7 @@ public class IT_Projekt implements EntryPoint {
 		// Assemble Main panel.
 		mainPanel.add(navigator);
 		mainPanel.add(contentPanel);
+		
 		
 		mainPanel.addStyleName("mainPanel");
 		
@@ -68,6 +80,7 @@ public class IT_Projekt implements EntryPoint {
 
 		// Associate the Main panel with the HTML host page.
 			RootPanel.get("navigator").add(mainPanel);
+			
 
 	}
 }
