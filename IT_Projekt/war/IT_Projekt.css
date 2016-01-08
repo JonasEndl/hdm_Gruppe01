@@ -3,7 +3,19 @@ body {
 	padding: 10.0px;
 }
 
+h1{
+	
+  font-size: 2em;
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 70px;
+  text-align: center;
+  background-color: steeltblue;
+}
+
+
 .navigator {
+	background-color: steelblue;
 	font-size: 16.0pt;
 	width: 180.0px;
 	margin-left: 10%;
@@ -12,7 +24,7 @@ body {
 }
 
 .NavButton {
-
+	
 display: block;
 width: 180.0px;
 margin-top: 20px !important
@@ -20,7 +32,7 @@ margin-top: 20px !important
 }
 
 .contentPanel{
-	background-color: green;
+	background-color: lightblue;
 	width: 1000px;
 	height: 500px;
 margin-top: 50px;
@@ -29,7 +41,7 @@ margin-left: 40px;
 }
 
 .mainPanel{
-	background-color: red;
+	background-color: steelblue;
 	width: 1300px;
 	height: 600px;
 	
