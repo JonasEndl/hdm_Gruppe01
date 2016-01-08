@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class IT_Projekt implements EntryPoint {
 
+
 	private HorizontalPanel mainPanel = new HorizontalPanel();
 	private HorizontalPanel contentPanel = new HorizontalPanel();
 	private VerticalPanel navigator = new VerticalPanel();
