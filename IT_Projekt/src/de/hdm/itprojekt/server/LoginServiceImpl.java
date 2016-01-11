@@ -6,6 +6,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import de.hdm.itprojekt.shared.LoginInfo;
+import de.hdm.itprojekt.shared.LoginService;
 import de.hdm.itprojekt.shared.bo.Nutzer; 
 
 
