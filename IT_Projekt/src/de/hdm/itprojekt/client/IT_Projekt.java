@@ -125,6 +125,6 @@ public class IT_Projekt implements EntryPoint {
 			signInLink.setHref(loginInfo.getLoginUrl());
 			loginPanel.add(loginLabel);
 			loginPanel.add(signInLink);
-			RootPanel.get("stockList").add(loginPanel);
+			RootPanel.get("it_projekt").add(loginPanel);
 			}
 }
