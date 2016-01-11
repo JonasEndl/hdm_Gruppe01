@@ -1,12 +1,21 @@
 package de.hdm.itprojekt.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Anchor;
+
+import de.hdm.itprojekt.shared.LoginInfo;
+import de.hdm.itprojekt.shared.LoginService;
+import de.hdm.itprojekt.shared.LoginServiceAsync;
+
 
 
 public class IT_Projekt implements EntryPoint {
@@ -24,11 +33,39 @@ public class IT_Projekt implements EntryPoint {
 	private Button meineNachrichten = new Button("Meine Nachrichten");
 	private Button aktualisieren = new Button("Aktualisieren");
 
+	
+	private LoginInfo loginInfo = null;
+	private VerticalPanel loginPanel = new VerticalPanel();
+	private Label loginLabel = new Label(
+	"Please sign in to your Google Account to access the StockWatcher application.");
+	private Anchor signInLink = new Anchor("Sign In");
 
 	/**
 	 * Entry point method.
 	 */
 	public void onModuleLoad() {
+		
+		// Check login status using login service.
+		  LoginServiceAsync loginService = GWT.create(LoginService.class);
+		  loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo>() {
+		  public void onFailure(Throwable error) {
+		  }
+		  public void onSuccess(LoginInfo result) {
+			  loginInfo = result;
+			  if(loginInfo.isLoggedIn()) {
+			  loadIT_Projekt();
+			  } else {
+			  loadLogin();
+			  }
+			  }
+			  });
+		 
+		  loadIT_Projekt();
+	  }
+		  
+		  
+	  private void loadIT_Projekt() {  
+		
 
 		navigator.add(profil);
 		navigator.add(nachrichten);
@@ -82,4 +119,12 @@ public class IT_Projekt implements EntryPoint {
 			
 
 	}
+	  
+	  private void loadLogin() {
+			// Assemble login panel.
+			signInLink.setHref(loginInfo.getLoginUrl());
+			loginPanel.add(loginLabel);
+			loginPanel.add(signInLink);
+			RootPanel.get("stockList").add(loginPanel);
+			}
 }
