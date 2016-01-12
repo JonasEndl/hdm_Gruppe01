@@ -6,7 +6,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -18,12 +17,11 @@ import de.hdm.itprojekt.shared.LoginServiceAsync;
 
 
 
-public class IT_Projekt implements EntryPoint {
+public class IT_Projekt implements EntryPoint,MainPanel {
 
 
-	private HorizontalPanel mainPanel = new HorizontalPanel();
-	private HorizontalPanel contentPanel = new HorizontalPanel();
-	private VerticalPanel navigator = new VerticalPanel();
+	
+	
 	private Button profil = new Button("Profil");
 	private Button nachrichten = new Button("Nachrichten");
 	private Button abonnements = new Button("Abonnements");
