@@ -6,7 +6,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -16,8 +15,13 @@ import de.hdm.itprojekt.shared.LoginInfo;
 import de.hdm.itprojekt.shared.LoginService;
 import de.hdm.itprojekt.shared.LoginServiceAsync;
 
-public class IT_Projekt implements EntryPoint {
 
+
+public class IT_Projekt implements EntryPoint,MainPanel {
+
+
+	
+	
 	private Button profil = new Button("Profil");
 	private Button nachrichten = new Button("Nachrichten");
 	private Button abonnements = new Button("Abonnements");
@@ -26,41 +30,40 @@ public class IT_Projekt implements EntryPoint {
 	private Button logout = new Button("Logout");
 	private Button meineNachrichten = new Button("Meine Nachrichten");
 	private Button aktualisieren = new Button("Aktualisieren");
-	//HorizontalPanel mainPanel = new HorizontalPanel();
-	//HorizontalPanel contentPanel = new HorizontalPanel();
-	VerticalPanel navigator = new VerticalPanel();
 
+	
 	private LoginInfo loginInfo = null;
 	private VerticalPanel loginPanel = new VerticalPanel();
 	private Label loginLabel = new Label(
-			"Please sign in to your Google Account to access the StockWatcher application.");
+	"Please sign in to your Google Account to access the StockWatcher application.");
 	private Anchor signInLink = new Anchor("Sign In");
 
 	/**
 	 * Entry point method.
 	 */
 	public void onModuleLoad() {
-
+		
 		// Check login status using login service.
-		LoginServiceAsync loginService = GWT.create(LoginService.class);
-		loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo>() {
-			public void onFailure(Throwable error) {
-			}
-
-			public void onSuccess(LoginInfo result) {
-				loginInfo = result;
-				if (loginInfo.isLoggedIn()) {
-					loadIT_Projekt();
-				} else {
-					loadLogin();
-				}
-			}
-		});
-
-		loadIT_Projekt();
-	}
-
-	private void loadIT_Projekt() {
+		  LoginServiceAsync loginService = GWT.create(LoginService.class);
+		  loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo>() {
+		  public void onFailure(Throwable error) {
+		  }
+		  public void onSuccess(LoginInfo result) {
+			  loginInfo = result;
+			  if(loginInfo.isLoggedIn()) {
+			  loadIT_Projekt();
+			  } else {
+			  loadLogin();
+			  }
+			  }
+			  });
+		 
+		  loadIT_Projekt();
+	  }
+		  
+		  
+	  private void loadIT_Projekt() {  
+		
 
 		navigator.add(profil);
 		navigator.add(nachrichten);
@@ -69,8 +72,9 @@ public class IT_Projekt implements EntryPoint {
 		navigator.add(hashtag);
 		navigator.add(logout);
 		navigator.addStyleName("navigator");
-		//contentPanel.add(meineNachrichten);
-		//contentPanel.add(aktualisieren);
+		contentPanel.add(meineNachrichten);
+		contentPanel.add(aktualisieren);
+		
 
 		// add style names to Buttons
 		profil.addStyleName("NavButton");
@@ -81,40 +85,44 @@ public class IT_Projekt implements EntryPoint {
 		logout.addStyleName("NavButton");
 		aktualisieren.addStyleName("ContentButton");
 		meineNachrichten.addStyleName("ContentButton");
-
+	
+		
+		
 		// Content Panel
-		//contentPanel.addStyleName("contentPanel");
-
+		contentPanel.addStyleName("contentPanel");
+		
 		// Assemble Main panel.
-		//mainPanel.add(navigator);
-		//mainPanel.add(contentPanel);
-
-		//mainPanel.addStyleName("mainPanel");
-
-		profil.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				RootPanel.get("Content").clear();
-				RootPanel.get("Content").add(new Profil());
-			}
-		});
-
-		nachrichten.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				RootPanel.get("Content").clear();
-				RootPanel.get("Content").add(new Nachrichten());
-			}
-		});
+		mainPanel.add(navigator);
+		mainPanel.add(contentPanel);
+		
+		
+		mainPanel.addStyleName("mainPanel");
+		
+		 profil.addClickHandler(new ClickHandler() {
+		      public void onClick(ClickEvent event) {
+		        RootPanel.get("Content").clear();
+		        RootPanel.get("Content").add(new Profil());
+		      }
+		    });
+		
+		 nachrichten.addClickHandler(new ClickHandler() {
+		      public void onClick(ClickEvent event) {
+		        RootPanel.get("Content").clear();
+		        RootPanel.get("Content").add(new Nachrichten());
+		      }
+		    });
 
 		// Associate the Main panel with the HTML host page.
-		RootPanel.get("navigator").add(navigator);
+			RootPanel.get("navigator").add(mainPanel);
+			
 
 	}
-
-	private void loadLogin() {
-		// Assemble login panel.
-		signInLink.setHref(loginInfo.getLoginUrl());
-		loginPanel.add(loginLabel);
-		loginPanel.add(signInLink);
-		RootPanel.get("it_projekt").add(loginPanel);
-	}
+	  
+	  private void loadLogin() {
+			// Assemble login panel.
+			signInLink.setHref(loginInfo.getLoginUrl());
+			loginPanel.add(loginLabel);
+			loginPanel.add(signInLink);
+			RootPanel.get("it_projekt").add(loginPanel);
+			}
 }
