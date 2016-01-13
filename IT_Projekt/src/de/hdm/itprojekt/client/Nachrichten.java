@@ -1,19 +1,22 @@
 package de.hdm.itprojekt.client;
 
-
+import de.hdm.itprojekt.client.IT_Projekt;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 
-public class Nachrichten extends VerticalPanel implements MainPanel {
+public class Nachrichten extends HorizontalPanel {
 
 	private Button test2 = new Button("Test2");
+	HorizontalPanel contentPanel = new HorizontalPanel();
 
-	public Nachrichten(){
-		
-		RootPanel.get("Content").add(test2);
-		
+	public Nachrichten() {
+
+		contentPanel.addStyleName("contentPanel");
+		contentPanel.add(test2);
+		RootPanel.get("Content").add(contentPanel);
+
 	}
 
 }
