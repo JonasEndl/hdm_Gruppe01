@@ -20,7 +20,7 @@ public class DBConnection {
 	 * @author Thies
 	 */
 	
-	private static String googleUrl = "jdbc:google:rdbms://130.211.66.99it-projektgruppe01:itprojekt15/itprojekt16?user=root&password=root";
+	private static String googleUrl = "jdbc:google:rdbms://130.211.66.99:it-projektgruppe01:itprojekt15/itprojekt16?user=root&password=root";
 
 
 	public static Connection connection() {
