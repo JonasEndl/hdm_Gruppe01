@@ -83,7 +83,7 @@ public class NutzerMapper {
 
 			// Statement ausfüllen und als Query an die DB schicken
 			ResultSet rs = stmt.executeQuery(
-					"SELECT id, vorName, nachnameName, eMail FROM nutzer " + "WHERE id=" + id + " ORDER BY nachName");
+					"SELECT id, vorName, nachName, eMail FROM nutzer " + "WHERE id=" + id + " ORDER BY nachName");
 
 			/*
 			 * Da id Primärschlüssel ist, kann max. nur ein Tupel zurückgegeben
