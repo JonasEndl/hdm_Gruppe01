@@ -1,9 +1,16 @@
 package de.hdm.itprojekt.server.db;
 
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
-import de.hdm.itprojekt.shared.bo.*;
+
+import de.hdm.itprojekt.shared.bo.Abonnement;
+import de.hdm.itprojekt.shared.bo.Hashtag;
+import de.hdm.itprojekt.shared.bo.HashtagAbo;
 
 /**
  * Mapper-Klasse, die <code>HashtagAbo</code>-Objekte auf eine relationale
@@ -83,7 +90,7 @@ public class HashtagAboMapper {
 
 			// Statement ausfüllen und als Query an die DB schicken
 			ResultSet rs = stmt
-					.executeQuery("SELECT id, schlagwort FROM hashtagAbon" + "WHERE id=" + id + " ORDER BY id");
+					.executeQuery("SELECT HashtagID, Schlagwort FROM HashtagAbo" + "WHERE HashtagID=" + id + " ORDER BY HashtagID");
 
 			/*
 			 * Da id Primärschlüssel ist, kann max. nur ein Tupel zurückgegeben
@@ -93,7 +100,7 @@ public class HashtagAboMapper {
 				// Ergebnis-Tupel in Objekt umwandeln
 				HashtagAbo ha = new HashtagAbo();
 				ha.setID(rs.getInt("id"));
-				ha.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
+				ha.setErstellungszeitpunkt(rs.getString("Erstellungszeitpunkt"));
 
 				return ha;
 			}
@@ -162,7 +169,7 @@ public class HashtagAboMapper {
 			 * Zunächst schauen wir nach, welches der momentan höchste
 			 * Primärschlüsselwert ist.
 			 */
-			ResultSet rs = stmt.executeQuery("SELECT MAX(id) AS maxid " + "FROM HashtagAbo ");
+			ResultSet rs = stmt.executeQuery("SELECT MAX(HashtagAboID) AS maxid " + "FROM HashtagAbo ");
 			// Wenn wir etwas zurückerhalten, kann dies nur einzeilig sein
 			if (rs.next()) {
 				/*
@@ -173,7 +180,7 @@ public class HashtagAboMapper {
 
 				stmt = con.createStatement();
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
-				stmt.executeUpdate("INSERT INTO HashtagAbo (id, Erstellungszeitpunkt) " + "VALUES ("
+				stmt.executeUpdate("INSERT INTO HashtagAbo (HashtagAboID, Erstellungszeitpunkt) " + "VALUES ("
 						+ ha.getID() + ", " + ha.getErstellungszeitpunkt() + ",  " + ")");
 			}
 		} catch (SQLException e2) {
@@ -212,7 +219,7 @@ public class HashtagAboMapper {
 			// schlagwort=\"" +
 			// ha.gettext() + "\" " + "WHERE id=" + ha.getId());
 
-			stmt.executeUpdate("UPDATE `hashtagAbon` SET `Erstellungszeitpunkt`='" + "' WHERE `id`= " + ha.getID() + ";");
+			stmt.executeUpdate("UPDATE `HashtagAbo` SET `Erstellungszeitpunkt`='" + "' WHERE `HashtagID`= " + ha.getID() + ";");
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -237,7 +244,7 @@ public class HashtagAboMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			stmt.executeUpdate("DELETE FROM hashtagAbo " + "WHERE id=" + ha.getID());
+			stmt.executeUpdate("DELETE FROM HashtagAbo " + "WHERE HashtagID=" + ha.getID());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();

@@ -1,9 +1,14 @@
 package de.hdm.itprojekt.server.db;
 
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
-import de.hdm.itprojekt.shared.bo.Hashtag;
+
+import de.hdm.itprojekt.shared.bo.*;
 
 
 public class HashtagMapper {

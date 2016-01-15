@@ -1,7 +1,12 @@
 package de.hdm.itprojekt.server.db;
 
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
+
 
 import de.hdm.itprojekt.shared.bo.*;
 
@@ -83,7 +88,7 @@ public class NutzerMapper {
 
 			// Statement ausfüllen und als Query an die DB schicken
 			ResultSet rs = stmt.executeQuery(
-					"SELECT id, vorName, nachName, eMail FROM nutzer " + "WHERE id=" + id + " ORDER BY nachName");
+					"SELECT NutzerID, vorName, nachName, eMail FROM Nutzer " + "WHERE NutzerID=" + id + " ORDER BY nachName");
 
 			/*
 			 * Da id Primärschlüssel ist, kann max. nur ein Tupel zurückgegeben
@@ -92,7 +97,7 @@ public class NutzerMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Nutzer n = new Nutzer();
-				n.setID(rs.getInt("id"));
+				n.setID(rs.getInt("NutzerID"));
 				n.setVorname(rs.getString("vorName"));
 				n.setNachname(rs.getString("nachName"));
 
@@ -122,16 +127,16 @@ public class NutzerMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM `nutzer` ORDER BY `name`");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM `Nutzer` ORDER BY `nachName`");
 
 			// Für jeden Eintrag im Suchergebnis wird nun ein Nutzer-Objekt
 			// erstellt.
 			while (rs.next()) {
 				Nutzer n = new Nutzer();
-				n.setID(rs.getInt("id"));
+				n.setID(rs.getInt("NutzerID"));
 				n.setVorname(rs.getString("vorName"));
 				n.setNachname(rs.getString("nachName"));
-				n.setMailadresse(rs.getString("EMail"));
+				n.setMailadresse(rs.getString("eMail"));
 
 				// Hinzufügen des neuen Objekts zum Ergebnisvektor
 				result.addElement(n);
@@ -176,7 +181,7 @@ public class NutzerMapper {
 
 				stmt = con.createStatement();
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
-				stmt.executeUpdate("INSERT INTO Nutzer (id, vorname, nachname, email) " + "VALUES (" + n.getID() + ", "
+				stmt.executeUpdate("INSERT INTO Nutzer (NutzerID, vorName, nachName, eMail) " + "VALUES (" + n.getID() + ", "
 						+ n.getVorname() + ", " + n.getNachname() + ", " + n.getMailadresse() + ")");
 			}
 		} catch (SQLException e2) {
@@ -214,8 +219,8 @@ public class NutzerMapper {
 			// stmt.executeUpdate("UPDATE nutzer " + "SET vorname=\"" +
 			// n.getvorname() + "\" " + "WHERE id=" + n.getId());
 
-			stmt.executeUpdate("UPDATE `nutzer` SET `name`='" + n.getVorname() + "',`nachname`='" + n.getNachname()
-					+ "',`email`='" + n.getMailadresse() + "' WHERE `id`= " + n.getID() + ";");
+			stmt.executeUpdate("UPDATE `Nutzer` SET `vorName`='" + n.getVorname() + "',`nachName`='" + n.getNachname()
+					+ "',`eMail`='" + n.getMailadresse() + "' WHERE `NutzerID`= " + n.getID() + ";");
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -237,7 +242,7 @@ public class NutzerMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			stmt.executeUpdate("DELETE FROM nutzer " + "WHERE id=" + n.getID());
+			stmt.executeUpdate("DELETE FROM Nutzer " + "WHERE NutzerID=" + n.getID());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();

@@ -1,7 +1,13 @@
 package de.hdm.itprojekt.server.db;
 
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
+
+
 
 import de.hdm.itprojekt.shared.bo.*;
 
@@ -70,7 +76,7 @@ public class UnterhaltungMapper {
 			Statement stmt = con.createStatement();
 
 			// Statement ausfüllen und als Query an die DB schicken
-			ResultSet rs = stmt.executeQuery("SELECT id, FROM unterhaltung " + "WHERE id=" + id + " ORDER BY id");
+			ResultSet rs = stmt.executeQuery("SELECT UnterhaltungID, FROM Unterhaltung " + "WHERE UnterhaltungID=" + id + " ORDER BY UnterhaltungID");
 
 			/*
 			 * Da id Primärschlüssel ist, kann max. nur ein Tupel zurückgegeben
@@ -79,8 +85,8 @@ public class UnterhaltungMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Unterhaltung u = new Unterhaltung();
-				u.setID(rs.getInt("id"));
-				u.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
+				u.setID(rs.getInt("UnterhaltungID"));
+				u.setErstellungszeitpunkt(rs.getString("Erstellungszeitpunkt"));
 
 				return u;
 			}
@@ -108,15 +114,15 @@ public class UnterhaltungMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM `unterhaltung` ORDER BY `id`");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM `Unterhaltung` ORDER BY `UnterhaltungID`");
 
 			// Für jeden Eintrag im Suchergebnis wird nun ein
 			// Unterhaltung-Objekt
 			// erstellt.
 			while (rs.next()) {
 				Unterhaltung u = new Unterhaltung();
-				u.setID(rs.getInt("id"));
-				u.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
+				u.setID(rs.getInt("UnterhalutungID"));
+				u.setErstellungszeitpunkt(rs.getString("Erstellungszeitpunkt"));
 
 				// Hinzufügen des neuen Objekts zum Ergebnisvektor
 				result.addElement(u);
@@ -161,7 +167,7 @@ public class UnterhaltungMapper {
 
 				stmt = con.createStatement();
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
-				stmt.executeUpdate("INSERT INTO Unterhaltung (id, Erstellungszeitpunkt) " + "VALUES (" + u.getID()
+				stmt.executeUpdate("INSERT INTO Unterhaltung (UnterhaltungID, Erstellungszeitpunkt) " + "VALUES (" + u.getID()
 						+ ", " + u.getErstellungszeitpunkt() + ", " + ")");
 			}
 		} catch (SQLException e2) {
@@ -196,8 +202,8 @@ public class UnterhaltungMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			stmt.executeUpdate("UPDATE `unterhaltung` SET `Erstellungszeitpunkt`='" + u.getErstellungszeitpunkt()
-					+ "' WHERE `id`= " + u.getID() + ";");
+			stmt.executeUpdate("UPDATE `Unterhaltung` SET `Erstellungszeitpunkt`='" + u.getErstellungszeitpunkt()
+					+ "' WHERE `UnterhaltungID`= " + u.getID() + ";");
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -219,7 +225,7 @@ public class UnterhaltungMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			stmt.executeUpdate("DELETE FROM unterhaltung " + "WHERE id=" + u.getID());
+			stmt.executeUpdate("DELETE FROM Unterhaltung " + "WHERE UnterhaltungID=" + u.getID());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();

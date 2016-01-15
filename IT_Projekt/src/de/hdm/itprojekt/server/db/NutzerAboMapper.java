@@ -1,9 +1,15 @@
 package de.hdm.itprojekt.server.db;
 
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
 import de.hdm.itprojekt.shared.bo.NutzerAbo;
+import de.hdm.itprojekt.shared.bo.Nutzer;
+import de.hdm.itprojekt.shared.bo.Abonnement;
 
 
 
@@ -73,7 +79,7 @@ public class NutzerAboMapper {
 
 			// Statement ausfüllen und als Query an die DB schicken
 			ResultSet rs = stmt.executeQuery(
-					"SELECT id, schlagwort FROM nutzerAbo " + "WHERE id=" + id + " ORDER BY id");
+					"SELECT NutzerAboID FROM NutzerAbo " + "WHERE NutzerAboID=" + id + " ORDER BY NutzerAboID");
 
 			/*
 			 * Da id Primärschlüssel ist, kann max. nur ein Tupel zurückgegeben
@@ -82,8 +88,8 @@ public class NutzerAboMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				NutzerAbo nab = new NutzerAbo();
-				nab.setID(rs.getInt("id"));
-				nab.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
+				nab.setID(rs.getInt("NutzerAboID"));
+				nab.setErstellungszeitpunkt(rs.getString("Erstellungszeitpunkt"));
 				
 
 				return nab;
@@ -112,14 +118,14 @@ public class NutzerAboMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM `nutzerAbo` ORDER BY `id`");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM `NutzerAbo` ORDER BY `NutzerAboID`");
 
 			// Für jeden Eintrag im Suchergebnis wird nun ein NutzerAbo-Objekt
 			// erstellt.
 			while (rs.next()) {
 				NutzerAbo nab = new NutzerAbo();
-				nab.setID(rs.getInt("id"));
-				nab.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
+				nab.setID(rs.getInt("NutzerAboID"));
+				nab.setErstellungszeitpunkt(rs.getString("Erstellungszeitpunkt"));
 
 
 				// Hinzufügen des neuen Objekts zum Ergebnisvektor
@@ -154,7 +160,7 @@ public class NutzerAboMapper {
 			 * Zunächst schauen wir nach, welches der momentan höchste
 			 * Primärschlüsselwert ist.
 			 */
-			ResultSet rs = stmt.executeQuery("SELECT MAX(id) AS maxid " + "FROM NutzerAbo ");
+			ResultSet rs = stmt.executeQuery("SELECT MAX(NutzerAboID) AS maxid " + "FROM NutzerAbo ");
 			// Wenn wir etwas zurückerhalten, kann dies nur einzeilig sein
 			if (rs.next()) {
 				/*
@@ -165,8 +171,8 @@ public class NutzerAboMapper {
 
 				stmt = con.createStatement();
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
-				stmt.executeUpdate("INSERT INTO HashtagAbo (id, Erstellungszeitpunkt, schlagwort) " + "VALUES (" + nab.getID()
-						+ ", " + nab.getErstellungszeitpunkt() + ", " + nab.schlagwort() + ", " + ")");
+				stmt.executeUpdate("INSERT INTO NutzerAbo (NutzerAboID, Erstellungszeitpunkt) " + "VALUES (" + nab.getID()
+						+ ", " + nab.getErstellungszeitpunkt() + ", " + ")");
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -203,8 +209,8 @@ public class NutzerAboMapper {
 			// stmt.executeUpdate("UPDATE HashtagAbonnement " + "SET schlagwort=\"" +
 			// ha.gettext() + "\" " + "WHERE id=" + ha.getId());
 
-			stmt.executeUpdate("UPDATE `nutzerAbo` SET `Erstellungszeitpunkt`='"
-					+ "' WHERE `id`= " + nab.getID() + ";");
+			stmt.executeUpdate("UPDATE `NutzerAbo` SET `Erstellungszeitpunkt`='"
+					+ "' WHERE `NutzerAboID`= " + nab.getID() + ";");
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -226,7 +232,7 @@ public class NutzerAboMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			stmt.executeUpdate("DELETE FROM nutzerAbon" + "WHERE id=" + nab.getID());
+			stmt.executeUpdate("DELETE FROM NutzerAbo" + "WHERE NutzerAboID=" + nab.getID());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();

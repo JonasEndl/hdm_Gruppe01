@@ -1,9 +1,15 @@
 package de.hdm.itprojekt.server.db;
 
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
+
 import de.hdm.itprojekt.shared.bo.*;
+
 
 
 
@@ -59,7 +65,7 @@ public class NachrichtMapper {
 
 			// Statement ausfüllen und als Query an die DB schicken
 			ResultSet rs = stmt.executeQuery(
-					"SELECT id, vorName, nachnameName, eMail FROM nutzer " + "WHERE id=" + id + " ORDER BY nachName");
+					"SELECT NachrichtID, Erstellungszeitpunkt, Text FROM Nachricht " + "WHERE NachrichtID=" + id + " ORDER BY NachrichtID");
 
 			/*
 			 * Da id Primärschlüssel ist, kann max. nur ein Tupel zurückgegeben
@@ -68,9 +74,9 @@ public class NachrichtMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Nutzer na = new Nutzer();
-				na.setID(rs.getInt("id"));
-				na.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
-				na.setText(rs.getString("text"));
+				na.setID(rs.getInt("NachrichtIDID"));
+				na.setErstellungszeitpunkt(rs.getString("Erstellungszeitpunkt"));
+				na.setText(rs.getString("Text"));
 
 				return na;
 			}
@@ -98,15 +104,15 @@ public class NachrichtMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM `nachricht` ORDER BY `id`");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM `Nachricht` ORDER BY `NachrichtID`");
 
 			// Für jeden Eintrag im Suchergebnis wird nun ein Nachricht-Objekt
 			// erstellt.
 			while (rs.next()) {
 				Nachricht na = new Nachricht();
-				na.setID(rs.getInt("id"));
-				na.setErstellungszeitpunkt(rs.getString("erstellungszeitpunkt"));
-				na.setText(rs.getString("text"));
+				na.setID(rs.getInt("NachrichtID"));
+				na.setErstellungszeitpunkt(rs.getString("Erstellungszeitpunkt"));
+				na.setText(rs.getString("Text"));
 
 				// Hinzufügen des neuen Objekts zum Ergebnisvektor
 				result.addElement(na);
@@ -151,7 +157,7 @@ public class NachrichtMapper {
 
 				stmt = con.createStatement();
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
-				stmt.executeUpdate("INSERT INTO Nachricht (id, Erstellungszeitpunkt, text) " + "VALUES (" + na.getID()
+				stmt.executeUpdate("INSERT INTO Nachricht (NachrichtID, Erstellungszeitpunkt, Text) " + "VALUES (" + na.getID()
 						+ ", " + na.getErstellungszeitpunkt() + ", " + na.getText() + ", " + ")");
 			}
 		} catch (SQLException e2) {
@@ -189,8 +195,8 @@ public class NachrichtMapper {
 			// stmt.executeUpdate("UPDATE Nachricht " + "SET text=\"" +
 			// n.gettext() + "\" " + "WHERE id=" + n.getId());
 
-			stmt.executeUpdate("UPDATE `nachricht` SET `text`='" + na.getvorname() + "',`Erstellungszeitpunkt`='"
-					+ "' WHERE `id`= " + na.getID() + ";");
+			stmt.executeUpdate("UPDATE `Nachricht` SET `Text`='" + na.getvorname() + "',`Erstellungszeitpunkt`='"
+					+ "' WHERE `NachrichtID`= " + na.getID() + ";");
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -212,7 +218,7 @@ public class NachrichtMapper {
 		try {
 			Statement stmt = con.createStatement();
 
-			stmt.executeUpdate("DELETE FROM nachricht " + "WHERE id=" + na.getID());
+			stmt.executeUpdate("DELETE FROM Nachricht " + "WHERE NachrichtID=" + na.getID());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();
