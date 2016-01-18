@@ -1,7 +1,11 @@
 package de.hdm.itprojekt.client;
 
 import de.hdm.itprojekt.client.IT_Projekt;
+import de.hdm.thies.bankProjekt.client.gui.AccountForm.CreateDepositCallback;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
@@ -57,9 +61,16 @@ public class Nachrichten extends HorizontalPanel {
 		contentPanel2.add(ErhalteneNachrichtenContent);
 
 		
+		MeineNachrichten.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				RootPanel.get("Content").clear();
+				RootPanel.get("Content").add(new MeineNachrichten());
+			}
+		});
 		
 		RootPanel.get("Content").add(contentPanel);
 
 	}
+
 
 }
