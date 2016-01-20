@@ -7,10 +7,13 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import de.hdm.itprojekt.shared.LoginInfo;
 import de.hdm.itprojekt.shared.LoginService;
-import de.hdm.itprojekt.shared.bo.Nutzer; 
 
+/**
+ * LoginServiceImpl Klasse.
+ * @author Teuta
+ *
+ */
 
-//LoginServiceImpl Klasse
 
 public class LoginServiceImpl extends RemoteServiceServlet implements LoginService{
 
@@ -20,17 +23,19 @@ private static final long serialVersionUID = 1L;
 public LoginServiceImpl()throws IllegalArgumentException { 
 } 
 
+
+
+
 public LoginInfo login (String requestUri) {
 
 UserService userService= UserServiceFactory.getUserService(); 
-Nutzer nutzer= userService.getCurrentUser(); 
+User user= userService.getCurrentUser(); 
 LoginInfo loginInfo= new LoginInfo();
 
-if (nutzer != null) { 
+if (user != null) { 
 loginInfo.setLoggedIn(true); 
-loginInfo.setEmailAddresse(nutzer.getMailadresse()); 
-loginInfo.setVorname(nutzer.getVorname());
-loginInfo.setNachname(nutzer.getNachname()); 
+loginInfo.setMailAdresse(user.getEmail()); 
+loginInfo.setNickname(user.getNickname());
 loginInfo.setLogoutUrl(userService.createLogoutURL(requestUri));
 
 } else { 
