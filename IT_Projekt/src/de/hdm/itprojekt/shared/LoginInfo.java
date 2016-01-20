@@ -1,21 +1,18 @@
 package de.hdm.itprojekt.shared;
 
 
-import java.io.Serializable;
-
-import de.hdm.itprojekt.shared.bo.Nutzer; 
+import java.io.Serializable; 
  
  
 public class LoginInfo implements Serializable { 
 
  
-	private static final long serialVersionUID = -5207880593956618550L; 
+	private static final long serialVersionUID = 1L; 
 	private boolean loggedIn = false; 
 	private String loginUrl; 
 	private String logoutUrl; 
- 	private String emailAddresse; 
-	private String googleId; 
-	private Nutzer nutzer;
+ 	private String mailAdresse; 
+	private String nickname;
 
  
 	public boolean isLoggedIn() { 
@@ -47,32 +44,23 @@ public class LoginInfo implements Serializable {
  	} 
  
  
- 	public String getEmailAddresse() { 
-		return emailAddresse; 
+ 	public String getMailAdresse() { 
+		return mailAdresse; 
  	} 
 
  
-	public void setEmailAddresse(String emailAddresse) { 
- 		this.emailAddresse = emailAddresse; 
+	public void setMailAdresse(String mailAdresse) { 
+ 		this.mailAdresse = mailAdresse; 
+	}
+ 
+
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+		
 	} 
-
- 
- 	public Nutzer getNutzer() { 
- 		return nutzer;
- 	} 
- 
- 
- 	public void setNutzer(Nutzer nutzer) { 
- 		this.nutzer = nutzer; 
- 	} 
- 
- 
- 	public String getGoogleId() { 
- 		return googleId; 
- 	} 
- 
- 
- 	public void setGoogleId(String string) { 
- 		this.googleId = string; 
- 	} 
+	
+	public String getNickname(){
+		return nickname;
+	}
  } 
