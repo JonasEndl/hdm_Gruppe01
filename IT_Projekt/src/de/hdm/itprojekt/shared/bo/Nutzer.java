@@ -41,13 +41,13 @@ package de.hdm.itprojekt.shared.bo;
 				this.vorname = vorname;
 			}
 			// Getter Mailadresse
-			public String getMailadresse() {
+			public String getMailAdresse() {
 				return this.mailAdresse;
 			}
 			
 			// Setter Mailadresse
-			public void setMailadresse(String mailadresse) {
-				this.mailAdresse = mailadresse;
+			public void setMailAdresse(String mailAdresse) {
+				this.mailAdresse = mailAdresse;
 			}
 
 
