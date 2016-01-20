@@ -17,11 +17,8 @@ import de.hdm.itprojekt.shared.LoginService;
 
 public class LoginServiceImpl extends RemoteServiceServlet implements LoginService{
 
-private String requestUri;
-private static final long serialVersionUID = 1L;
 
-public LoginServiceImpl()throws IllegalArgumentException { 
-} 
+private static final long serialVersionUID = 1L;
 
 
 
