@@ -6,12 +6,13 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Anchor;
 
+
+//import de.hdm.itprojekt.client.report.ReportGenerator;
 import de.hdm.itprojekt.shared.LoginInfo;
 import de.hdm.itprojekt.shared.LoginService;
 import de.hdm.itprojekt.shared.LoginServiceAsync;
@@ -23,6 +24,10 @@ public class IT_Projekt implements EntryPoint {
 	private Button abonnements = new Button("Abonnements");
 	private Button nutzer = new Button("Nutzer");
 	private Button hashtag = new Button("Hashtag");
+	final Button rGButton = new Button("Report Generator");
+	
+
+	
 	private Button logout = new Button("Logout");
 	private Button meineNachrichten = new Button("Meine Nachrichten");
 	private Button aktualisieren = new Button("Aktualisieren");
@@ -67,6 +72,7 @@ public class IT_Projekt implements EntryPoint {
 		navigator.add(abonnements);
 		navigator.add(nutzer);
 		navigator.add(hashtag);
+		navigator.add(rGButton);
 		navigator.add(logout);
 		navigator.addStyleName("navigator");
 		// contentPanel.add(meineNachrichten);
@@ -79,6 +85,7 @@ public class IT_Projekt implements EntryPoint {
 		nutzer.addStyleName("NavButton");
 		hashtag.addStyleName("NavButton");
 		logout.addStyleName("NavButton");
+		rGButton.addStyleName("NavButton");
 		aktualisieren.addStyleName("ContentButton");
 		meineNachrichten.addStyleName("ContentButton");
 
@@ -105,7 +112,14 @@ public class IT_Projekt implements EntryPoint {
 				RootPanel.get("Content").add(new Nachrichten());
 			}
 		});
-
+		
+//		rGButton.addClickHandler(new ClickHandler() {
+//			public void onClick(ClickEvent event) {
+//			RootPanel.get("content").clear();
+//			RootPanel.get("content").add(new ReportGenerator());
+//			}
+//	});
+		
 		// Associate the Main panel with the HTML host page.
 		RootPanel.get("navigator").add(navigator);
 
