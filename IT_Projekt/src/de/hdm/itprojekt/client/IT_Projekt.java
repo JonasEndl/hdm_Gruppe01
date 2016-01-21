@@ -4,12 +4,14 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Anchor;
+
 
 
 //import de.hdm.itprojekt.client.report.ReportGenerator;
@@ -113,12 +115,27 @@ public class IT_Projekt implements EntryPoint {
 			}
 		});
 		
+		
 //		rGButton.addClickHandler(new ClickHandler() {
 //			public void onClick(ClickEvent event) {
 //			RootPanel.get("content").clear();
 //			RootPanel.get("content").add(new ReportGenerator());
 //			}
 //	});
+
+
+//		logout.addClickHandler(new ClickHandler() {
+//			public void onClick(ClickEvent event) {
+//
+//				Window.Location.assign(loginInfo.getLogoutUrl());
+//
+//				Window.alert("Sie haben sich erfolgreich ausgeloggt.");
+//			}
+//		});
+		
+		
+		
+	
 		
 		// Associate the Main panel with the HTML host page.
 		RootPanel.get("navigator").add(navigator);
